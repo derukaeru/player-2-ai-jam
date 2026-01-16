@@ -13,9 +13,9 @@ border_blend = true
 corner_detail = 1
 
 [node name="speech_bubble" type="TextEdit"]
-offset_left = -176.0
-offset_top = -88.0
-offset_right = 176.0
+offset_top = 576.0
+offset_right = 1024.0
+offset_bottom = 648.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_6acpg")
 text = ". . ."
 script = ExtResource("1_6acpg")

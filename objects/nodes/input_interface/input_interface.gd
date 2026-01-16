@@ -45,10 +45,6 @@ func _ready() -> void:
 			text.grab_focus()
 	)
 
-	#if player2_stt:
-		## Pass the message from stt upwards
-		#player2_stt.stt_received.connect(_send)
-
 func _send(text : String) -> void:
 	append_line_user(text)
 	self.text.text = ""
