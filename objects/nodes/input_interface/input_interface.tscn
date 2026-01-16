@@ -17,7 +17,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_wtujj"]
 font_size = 49
 
-[node name="input_interface" type="Panel"]
+[node name="input_interface" type="Panel" groups=["input_interface"]]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

@@ -12,7 +12,7 @@ border_color = Color(0.14901961, 0.14901961, 0.14901961, 0.93333334)
 border_blend = true
 corner_detail = 1
 
-[node name="speech_bubble" type="TextEdit"]
+[node name="speech_bubble" type="TextEdit" groups=["speech_bubble"]]
 offset_top = 576.0
 offset_right = 1024.0
 offset_bottom = 648.0
