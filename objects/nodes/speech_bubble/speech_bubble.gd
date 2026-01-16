@@ -1,4 +1,4 @@
-
+class_name SpeechBubble
 extends TextEdit
 
 @onready var timer = $Timer
@@ -12,6 +12,6 @@ func play(message : String):
 
 func fade():
 	self.create_tween().tween_property(self, "scale", Vector2(1, 0), 0.5).set_trans(Tween.TRANS_EXPO)
-#
-#func _ready():
-	#self.hide()
+
+func _ready():
+	self.hide()

@@ -12,16 +12,7 @@ content_margin_left = 16.0
 content_margin_top = 16.0
 content_margin_right = 16.0
 content_margin_bottom = 16.0
-bg_color = Color(0.67488, 0.6536, 0.76, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.81, 0.81, 0.81, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wtujj"]
 font_size = 49
@@ -31,7 +22,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -161.0
+offset_top = -72.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("1_ts831")
@@ -43,40 +34,34 @@ scroll_container = NodePath("History")
 thinking = NodePath("Thinking Animation")
 player2_stt = NodePath("Player2STT")
 
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.6788007, 0.6840887, 0.90938073, 1)
+theme_override_colors/font_placeholder_color = Color(0.6370635, 0.62967515, 0.8340099, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ts831")
+placeholder_text = ". . ."
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -183.0
-offset_top = 27.0
-offset_right = -27.0
-offset_bottom = -27.0
+offset_left = -80.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/normal = ExtResource("2_asp3k")
 icon = ExtResource("2_wtujj")
 icon_alignment = 1
 expand_icon = true
-
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 16.0
-offset_right = -205.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_placeholder_color = Color(0.478067, 0.4615, 0.71, 1)
-theme_override_colors/font_color = Color(0.194667, 0.18, 0.4, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_ts831")
-placeholder_text = "(type your message here!)"
 
 [node name="History" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -105,6 +90,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 
 [node name="TTS Label" type="RichTextLabel" parent="STT Display"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,7 +98,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[i]Hold Tab to do STT[/i]"
 
 [node name="Listening Label" type="Label" parent="STT Display"]
 visible = false
@@ -122,7 +107,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "(Listening...)"
 
 [node name="Reply Wait Label" type="Label" parent="STT Display"]
 visible = false
@@ -132,7 +116,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "(Processing STT...)"
 
 [node name="Thinking Animation" type="Label" parent="."]
 visible = false

@@ -24,6 +24,10 @@ Player2WebHelper="*res://addons/player2/helpers/web_helper.gd"
 Player2AuthHelper="*res://addons/player2/helpers/auth_helper.gd"
 Player2API="*res://addons/player2/helpers/api.gd"
 
+[display]
+
+window/size/viewport_width=1024
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/player2/plugin.cfg")
