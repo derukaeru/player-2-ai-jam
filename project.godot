@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="player2-ai-jam"
+run/main_scene="uid://d2lukdapb4eub"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Player2AsyncHelper="*res://addons/player2/helpers/async_helper.gd"
+Player2ErrorHelper="*res://addons/player2/helpers/error_helper.tscn"
+Player2APISourceHelper="*res://addons/player2/helpers/Player2APISource.tscn"
+Player2WebHelper="*res://addons/player2/helpers/web_helper.gd"
+Player2AuthHelper="*res://addons/player2/helpers/auth_helper.gd"
+Player2API="*res://addons/player2/helpers/api.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/player2/plugin.cfg")
+
+[player2]
+
+client_id="019b86ec-9145-791e-b380-c05b092216c1"
+hide_opening_prompt=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
