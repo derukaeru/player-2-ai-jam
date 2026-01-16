@@ -1,6 +1,5 @@
-class_name NPC
-extends CharacterBody2D
-
+@tool
+extends Player2RPGEntity
 
 @export_group("AI", "ai")
 @export var ai_name : String
@@ -9,6 +8,7 @@ extends CharacterBody2D
 @export var ai_character_config : Player2AICharacterConfig = Player2AICharacterConfig.new()
 
 func _ready() -> void:
+	super._ready()
 	if Engine.is_editor_hint():
 		return
 	$Player2AINPC.character_name = name

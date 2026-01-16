@@ -1,4 +1,4 @@
-class_name SpeechBubble
+@tool
 extends TextEdit
 
 @onready var timer = $Timer

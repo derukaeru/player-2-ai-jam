@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dkts17h20jbsd" path="res://objects/nodes/speech_bubble/speech_bubble.gd" id="1_6acpg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6acpg"]
-bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.64705884)
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
@@ -13,6 +13,7 @@ border_blend = true
 corner_detail = 1
 
 [node name="speech_bubble" type="TextEdit" groups=["speech_bubble"]]
+visible = false
 offset_top = 576.0
 offset_right = 1024.0
 offset_bottom = 648.0

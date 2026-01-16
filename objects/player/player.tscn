@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu5mtvx0ghuig"]
+
+[ext_resource type="Script" uid="uid://1chjiidio7ov" path="res://objects/player/player.gd" id="1_cqmt1"]
+[ext_resource type="PackedScene" uid="uid://dqpgd715gxpb8" path="res://objects/nodes/input_interface/input_interface.tscn" id="2_g7ett"]
+[ext_resource type="PackedScene" uid="uid://mg6pflw3e3bx" path="res://objects/nodes/speech_bubble/speech_bubble.tscn" id="3_ssrue"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7ett"]
+size = Vector3(1, 1.5004883, 1)
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_cqmt1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74975586, 0)
+shape = SubResource("BoxShape3D_g7ett")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+axis = 1
+billboard = 2
+alpha_cut = 3
+texture_filter = 0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="gui" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="input_interface" parent="Camera3D/gui" instance=ExtResource("2_g7ett")]
+layout_mode = 1
+offset_top = -96.0
+
+[node name="speech_bubble" parent="Camera3D/gui" instance=ExtResource("3_ssrue")]
+visible = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/gui"]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
