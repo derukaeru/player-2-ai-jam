@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://b2x1x08mrp5cc"]
 
 [ext_resource type="PackedScene" uid="uid://cdvxbm0oegixg" path="res://addons/player2/templates/rpg/entity.tscn" id="1_6lwqq"]
-[ext_resource type="Script" uid="uid://g8khjtjt60lu" path="res://addons/player2/templates/rpg/speech/player_speech_accepter.gd" id="2_axlqe"]
+[ext_resource type="Script" uid="uid://g8khjtjt60lu" path="res://addons/player2/templates/rpg/player_speech_accepter.gd" id="2_axlqe"]
 [ext_resource type="Script" uid="uid://bcvkoahne4w1d" path="res://addons/player2/templates/rpg/npc.gd" id="2_ssmdj"]
 [ext_resource type="Script" uid="uid://bupnh0kqklshe" path="res://addons/player2/nodes/Player2AINPC.gd" id="4_p6i8k"]
 [ext_resource type="Script" uid="uid://fpb2ysodtcuy" path="res://addons/player2/helpers/tool_call/ToolCallFunctionDefinition.gd" id="5_ne6o3"]
@@ -14,16 +14,9 @@
 
 [sub_resource type="Resource" id="Resource_15klw"]
 script = ExtResource("8_gvhru")
-stream = false
-use_wav = false
-tts_speed = 1.0
-tts_default_language = 0
-tts_default_gender = 0
-voice_id = ""
 
 [sub_resource type="Resource" id="Resource_wetik"]
 script = ExtResource("7_wetik")
-tts_enabled = true
 tts = SubResource("Resource_15klw")
 metadata/_custom_type_script = "uid://bsi5tjg54www7"
 
@@ -31,20 +24,12 @@ metadata/_custom_type_script = "uid://bsi5tjg54www7"
 Resource = null
 resource_path = "res://addons/player2/templates/rpg/npc.tscn::Resource_t7l7t"
 script = ExtResource("6_15klw")
-definitions = Array[ExtResource("5_ne6o3")]([])
 
 [sub_resource type="Resource" id="Resource_epf4f"]
 script = ExtResource("8_gvhru")
-stream = false
-use_wav = false
-tts_speed = 1.0
-tts_default_language = 0
-tts_default_gender = 0
-voice_id = ""
 
 [sub_resource type="Resource" id="Resource_cok4r"]
 script = ExtResource("7_wetik")
-tts_enabled = true
 tts = SubResource("Resource_epf4f")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axlqe"]
@@ -57,7 +42,7 @@ radius = 416.097
 script = ExtResource("2_ssmdj")
 ai_name = "NPC"
 ai_description = "An NPC from the town, just an ordinary folk with some stories to tell."
-ai_save_conversation_history = null
+ai_save_conversation_history = false
 ai_character_config = SubResource("Resource_wetik")
 metadata/_edit_group_ = true
 
