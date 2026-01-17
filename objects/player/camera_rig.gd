@@ -21,3 +21,11 @@ func _process(delta):
 	
 	pos.x = clamp(pos.x, -3.9, 4.9)
 	global_position = pos
+
+func room_config():
+	position = Vector3(0, 1.78, -3.9)
+	$Camera3D.rotation = Vector3(-13.3, -180, 0)
+
+func alley_config():
+	position = Vector3(0, 3.2, -7.35)
+	$Camera3D.rotation = Vector3(3.4, -180, 0)

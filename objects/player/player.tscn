@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://1chjiidio7ov" path="res://objects/player/player.gd" id="1_cqmt1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7ett"]
-size = Vector3(1, 1.5004883, 1)
+size = Vector3(1, 2, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ssrue"]
+size = Vector2(1, 2)
 orientation = 2
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_cqmt1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74975586, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_g7ett")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -22,5 +23,5 @@ alpha_cut = 3
 texture_filter = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 1, 0)
 mesh = SubResource("PlaneMesh_ssrue")

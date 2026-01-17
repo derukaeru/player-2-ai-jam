@@ -36,6 +36,7 @@ input_interface=""
 speech_bubble=""
 world=""
 player=""
+camera_rig=""
 
 [input]
 
