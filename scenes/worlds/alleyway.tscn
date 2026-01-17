@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwduyoqq6ujso"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jfo6h"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ri6om"]
+sky_material = SubResource("ProceduralSkyMaterial_jfo6h")
+
+[sub_resource type="Environment" id="Environment_56ih2"]
+background_mode = 2
+sky = SubResource("Sky_ri6om")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfo6h"]
+albedo_color = Color(0.22802615, 0.17906249, 0.0956999, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jfo6h"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri6om"]
+albedo_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ri6om"]
+size = Vector2(13, 20)
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_56ih2"]
+size = Vector2(16, 20)
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b68ot"]
+size = Vector2(13, 20)
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mtk16"]
+size = Vector2(4, 20)
+orientation = 2
+
+[node name="alleyway" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_56ih2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="sidewalk" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.18636, 0, 0, 0, 1, 0, 0, 0, 1.4768102, 0, 0, 7.3686237)
+material_override = SubResource("StandardMaterial3D_jfo6h")
+mesh = SubResource("PlaneMesh_jfo6h")
+
+[node name="road" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.18636, 0, 0, 0, 1, 0, 0, 0, 0.4063251, 0, 0, -2.039284)
+material_override = SubResource("StandardMaterial3D_ri6om")
+mesh = SubResource("PlaneMesh_jfo6h")
+
+[node name="apartment_building" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="apartment_building"]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -14.5, 10, 0)
+mesh = SubResource("PlaneMesh_ri6om")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="apartment_building"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13, 10, 0)
+mesh = SubResource("PlaneMesh_56ih2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="apartment_building"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, 10, 4)
+mesh = SubResource("PlaneMesh_b68ot")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="apartment_building"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 10, 2)
+mesh = SubResource("PlaneMesh_mtk16")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="apartment_building"]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -8, 10, 2)
+mesh = SubResource("PlaneMesh_mtk16")
