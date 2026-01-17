@@ -1,4 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwduyoqq6ujso"]
+[gd_scene load_steps=15 format=3 uid="uid://cwduyoqq6ujso"]
+
+[ext_resource type="Script" uid="uid://bvfie3jcfma3y" path="res://scenes/worlds/alleyway.gd" id="1_56ih2"]
+[ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_ri6om"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jfo6h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -37,7 +40,13 @@ orientation = 2
 size = Vector2(4, 20)
 orientation = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ri6om"]
+size = Vector3(1.4491577, 3.0177002, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_56ih2"]
+
 [node name="alleyway" type="Node3D"]
+script = ExtResource("1_56ih2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_56ih2")
@@ -78,3 +87,22 @@ mesh = SubResource("PlaneMesh_mtk16")
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="apartment_building"]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -8, 10, 2)
 mesh = SubResource("PlaneMesh_mtk16")
+
+[node name="door" type="Area3D" parent="apartment_building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2951117)
+script = ExtResource("1_ri6om")
+interactable_type = 2
+interact_id = "apartment_door"
+display_name = "door"
+one_shot = false
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="apartment_building/door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.090911865, 1.0088501, 0.44900417)
+shape = SubResource("BoxShape3D_ri6om")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="apartment_building/door"]
+transform = Transform3D(1.4309125, 0, 0, 0, 5.1407824, 0, 0, 0, 0.72594666, 0, 0, 0.7959175)
+mesh = SubResource("BoxMesh_56ih2")
+
+[connection signal="interacted" from="apartment_building/door" to="." method="_on_door_interacted"]

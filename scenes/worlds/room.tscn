@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://d2qltjqax28l7"]
+[gd_scene load_steps=3 format=3 uid="uid://d2qltjqax28l7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gueig"]
+size = Vector2(8, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1rfg5"]
+size = Vector2(8, 4)
 
 [node name="room" type="Node3D"]
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+mesh = SubResource("PlaneMesh_gueig")
+
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 1)
+mesh = SubResource("PlaneMesh_1rfg5")

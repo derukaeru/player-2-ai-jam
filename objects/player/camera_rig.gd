@@ -19,4 +19,5 @@ func _process(delta):
 	if follow_z:
 		pos.z = lerp(pos.x, target_pos.y, 5.0 * delta)
 	
+	pos.x = clamp(pos.x, -3.9, 4.9)
 	global_position = pos
