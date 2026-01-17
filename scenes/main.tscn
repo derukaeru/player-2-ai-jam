@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d17jjl1084g8g"]
 
 [ext_resource type="PackedScene" uid="uid://cu5mtvx0ghuig" path="res://objects/player/player.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://d2qltjqax28l7" path="res://scenes/worlds/room.tscn" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cwduyoqq6ujso" path="res://scenes/worlds/alleyway.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://dunewrmu1kovp" path="res://objects/player/camera_rig.gd" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dqpgd715gxpb8" path="res://objects/nodes/input_interface/input_interface.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://mg6pflw3e3bx" path="res://objects/nodes/speech_bubble/speech_bubble.tscn" id="5_o6xl0"]
@@ -9,10 +9,11 @@
 [node name="main" type="Node3D"]
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="world" type="Node3D" parent="." groups=["world"]]
 
-[node name="room" parent="world" instance=ExtResource("2_tbgi4")]
+[node name="alleyway" parent="world" instance=ExtResource("2_0wfyh")]
 
 [node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target") groups=["camera_rig"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3.9)

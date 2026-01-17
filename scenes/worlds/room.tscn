@@ -13,17 +13,17 @@ sky = SubResource("Sky_1rfg5")
 tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gueig"]
-size = Vector2(16, 5)
+size = Vector2(12, 5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1rfg5"]
-size = Vector2(16, 4)
+size = Vector2(12, 4)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r57st"]
 size = Vector2(5, 4)
 orientation = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jrrc4"]
-size = Vector2(16, 5)
+size = Vector2(12, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gueig"]
 size = Vector3(16.759644, 3.2216797, 0.5185547)
@@ -49,11 +49,11 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2
 mesh = SubResource("PlaneMesh_1rfg5")
 
 [node name="right_wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -1.5)
 mesh = SubResource("PlaneMesh_r57st")
 
 [node name="left_wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8, 2, -1.5)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6, 2, -1.5)
 mesh = SubResource("PlaneMesh_r57st")
 
 [node name="ceiling" type="MeshInstance3D" parent="."]
@@ -67,13 +67,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108398, 1.24
 shape = SubResource("BoxShape3D_gueig")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108394, -1.6630282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108394, -1.1257528)
 shape = SubResource("BoxShape3D_gueig")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.180176, 1.1184692, -1.2999268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.180176, 1.1184692, -1.2999268)
 shape = SubResource("BoxShape3D_1rfg5")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.304846, 1.1010742, -1.2999268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.304846, 1.1010742, -1.2999268)
 shape = SubResource("BoxShape3D_1rfg5")
