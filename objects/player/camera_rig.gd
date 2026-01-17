@@ -5,6 +5,12 @@ extends Node3D
 @export var follow_y := false
 @export var follow_z := false
 
+var limit_left = 4.9
+var limit_right = -3.9
+
+func _ready():
+	room_config()
+
 func _process(delta):
 	if not target:
 		return
@@ -19,13 +25,17 @@ func _process(delta):
 	if follow_z:
 		pos.z = lerp(pos.x, target_pos.y, 5.0 * delta)
 	
-	pos.x = clamp(pos.x, -3.9, 4.9)
+	pos.x = clamp(pos.x, limit_right, limit_left)
 	global_position = pos
 
 func room_config():
-	position = Vector3(0, 1.78, -3.9)
-	$Camera3D.rotation = Vector3(-13.3, -180, 0)
+	position = Vector3(0, 2, -3.9)
+	$Camera3D.rotation_degrees = Vector3(-3.8, -180, 0)
+	limit_left = 2.6
+	limit_right = -2.6
 
 func alley_config():
 	position = Vector3(0, 3.2, -7.35)
-	$Camera3D.rotation = Vector3(3.4, -180, 0)
+	$Camera3D.rotation_degrees = Vector3(3.4, -180, 0)
+	limit_left = 4.9
+	limit_right = -3.9

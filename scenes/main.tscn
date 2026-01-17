@@ -15,12 +15,12 @@
 [node name="room" parent="world" instance=ExtResource("2_tbgi4")]
 
 [node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target") groups=["camera_rig"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78, -3.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3.9)
 script = ExtResource("3_tbgi4")
 target = NodePath("../player")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, 1.39757065e-14, -8.742278e-08, -2.0056625e-08, 0.9733274, 0.22942121, 8.509097e-08, 0.22942121, -0.9733274, 0, 0, 0)
+transform = Transform3D(-1, 1.0418913e-14, -8.7422784e-08, -5.8181913e-09, 0.9977829, 0.06655246, 8.722895e-08, 0.066552475, -0.9977829, 0, 0, 0)
 
 [node name="gui" type="Control" parent="CameraRig/Camera3D"]
 layout_mode = 3

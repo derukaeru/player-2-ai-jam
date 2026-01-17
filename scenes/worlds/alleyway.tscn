@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwduyoqq6ujso"]
+[gd_scene load_steps=18 format=3 uid="uid://cwduyoqq6ujso"]
 
 [ext_resource type="Script" uid="uid://bvfie3jcfma3y" path="res://scenes/worlds/alleyway.gd" id="1_56ih2"]
 [ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_ri6om"]
@@ -44,6 +44,15 @@ orientation = 2
 size = Vector3(1.4491577, 3.0177002, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_56ih2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56ih2"]
+size = Vector3(15.839478, 3.9819336, 4.562622)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b68ot"]
+size = Vector3(3, 4, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtk16"]
+size = Vector3(44, 4, 2)
 
 [node name="alleyway" type="Node3D"]
 script = ExtResource("1_56ih2")
@@ -104,5 +113,31 @@ shape = SubResource("BoxShape3D_ri6om")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="apartment_building/door"]
 transform = Transform3D(1.4309125, 0, 0, 0, 5.1407824, 0, 0, 0, 0.72594666, 0, 0, 0.7959175)
 mesh = SubResource("BoxMesh_56ih2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="apartment_building"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.917225, 1.4909668, 2.2733765)
+shape = SubResource("BoxShape3D_56ih2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.923689, 1.4909668, 2.2733765)
+shape = SubResource("BoxShape3D_56ih2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.923689, 1.4909668, 6.2733765)
+shape = SubResource("BoxShape3D_56ih2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1.5, -2)
+shape = SubResource("BoxShape3D_b68ot")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1.5, -2)
+shape = SubResource("BoxShape3D_b68ot")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -3.5)
+shape = SubResource("BoxShape3D_mtk16")
 
 [connection signal="interacted" from="apartment_building/door" to="." method="_on_door_interacted"]
