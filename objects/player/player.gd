@@ -1,26 +1,31 @@
 extends CharacterBody3D
 
-@export var speed: float = 170
+@export var speed: float = 100
 var can_move = true
 
 var curr_npc:CharacterBody3D
+var flip:bool = false
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 	if can_move:
 		if Global.ia("forward"):
-			direction.z = .5
+			direction.z = .8
 		if Global.ia("backward"):
-			direction.z = -.5
+			direction.z = -.8
 		if Global.ia("left"):
 			direction.x = 1
+			flip = true
 		if Global.ia("right"):
 			direction.x = -1
+			flip = false
 		
-	#if Global.ia("forward") or Global.ia("backward") or Global.ia("left") or Global.ia("right"):
-		#$model/AnimationPlayer.play("walk")
-	#else:
-		#$model/AnimationPlayer.play("RESET")
+	if Global.ia("forward") or Global.ia("backward") or Global.ia("left") or Global.ia("right") and can_move:
+		$AnimatedSprite3D.play("walk")
+	else:
+		$AnimatedSprite3D.play("idle")
+	
+	$AnimatedSprite3D.flip_h = flip
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized() * speed * delta

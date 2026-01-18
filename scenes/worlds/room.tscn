@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 mesh = SubResource("PlaneMesh_gueig")
 
 [node name="wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5, 2)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.27286434, 1.221409, 1.8618126)
 material_override = SubResource("StandardMaterial3D_gueig")
 mesh = SubResource("PlaneMesh_1rfg5")
 

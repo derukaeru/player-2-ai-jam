@@ -17,6 +17,7 @@ input_ray_pickable = false
 [node name="world" type="Node3D" parent="." groups=["world"]]
 
 [node name="alleyway" parent="world" instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012475014, 0, -0.0027316809)
 
 [node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target") groups=["camera_rig"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3797698, -4.4292135)

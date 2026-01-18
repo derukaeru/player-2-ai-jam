@@ -36,7 +36,7 @@ func room_config():
 	$Camera3D.set_orthogonal(3.78, 0.05, 4000.0)
 
 func hallway_config():
-	position = Vector3(0, 2.695, -4.429)
+	position = Vector3(0, 2.9, -4.429)
 	$Camera3D.rotation_degrees = Vector3(-10.4, -180, 0)
 	limit_left = 6
 	limit_right = -6

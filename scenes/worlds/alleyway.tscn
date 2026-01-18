@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwduyoqq6ujso"]
+[gd_scene load_steps=19 format=3 uid="uid://cwduyoqq6ujso"]
 
 [ext_resource type="Script" uid="uid://bvfie3jcfma3y" path="res://scenes/worlds/alleyway.gd" id="1_56ih2"]
 [ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_ri6om"]
+[ext_resource type="Texture2D" uid="uid://buwpemwr6pti2" path="res://assets/textures/bricks/brick_modern_05.jpg" id="2_b68ot"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jfo6h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,10 +16,13 @@ background_mode = 2
 sky = SubResource("Sky_ri6om")
 tonemap_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfo6h"]
-albedo_color = Color(0.22802615, 0.17906249, 0.0956999, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtk16"]
+albedo_texture = ExtResource("2_b68ot")
+uv1_scale = Vector3(14.995, 1.075, 4.17)
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jfo6h"]
+material = SubResource("StandardMaterial3D_mtk16")
 size = Vector2(10, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri6om"]
@@ -62,11 +66,11 @@ environment = SubResource("Environment_56ih2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="sidewalk" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.18636, 0, 0, 0, 1, 0, 0, 0, 1.4768102, 0, 0, 4.3686237)
-material_override = SubResource("StandardMaterial3D_jfo6h")
 mesh = SubResource("PlaneMesh_jfo6h")
 
 [node name="road" type="MeshInstance3D" parent="."]
@@ -86,7 +90,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13, 
 mesh = SubResource("PlaneMesh_56ih2")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="apartment_building"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, 10, 4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, 10, 3)
 mesh = SubResource("PlaneMesh_b68ot")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="apartment_building"]
@@ -98,7 +102,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -8, 
 mesh = SubResource("PlaneMesh_mtk16")
 
 [node name="door" type="Area3D" parent="apartment_building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9878445, 0, 3.2951117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9878445, 0, 2.2951117)
 script = ExtResource("1_ri6om")
 interactable_type = 2
 interact_id = "apartment_door"
@@ -126,7 +130,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.923689, 1.4909668, 2.2733
 shape = SubResource("BoxShape3D_56ih2")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.923689, 1.4909668, 6.2733765)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.923689, 1.4909668, 5.2733765)
 shape = SubResource("BoxShape3D_56ih2")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu5mtvx0ghuig"]
+[gd_scene load_steps=20 format=3 uid="uid://cu5mtvx0ghuig"]
 
 [ext_resource type="Script" uid="uid://1chjiidio7ov" path="res://objects/player/player.gd" id="1_cqmt1"]
+[ext_resource type="Texture2D" uid="uid://bdoho61afaqrm" path="res://assets/textures/player/Idle.png" id="2_g7ett"]
+[ext_resource type="Texture2D" uid="uid://y6i8ay5mcgxw" path="res://assets/textures/player/Walk.png" id="3_ssrue"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7ett"]
 size = Vector3(1, 2, 1)
@@ -15,6 +17,96 @@ orientation = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_cqmt1"]
 size = Vector3(3.1866455, 2.9481812, 3.6914063)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssrue"]
+atlas = ExtResource("2_g7ett")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnjyq"]
+atlas = ExtResource("2_g7ett")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnkmh"]
+atlas = ExtResource("2_g7ett")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkryw"]
+atlas = ExtResource("2_g7ett")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow0dq"]
+atlas = ExtResource("3_ssrue")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4kly"]
+atlas = ExtResource("3_ssrue")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgwla"]
+atlas = ExtResource("3_ssrue")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi5m7"]
+atlas = ExtResource("3_ssrue")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psowp"]
+atlas = ExtResource("3_ssrue")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45urx"]
+atlas = ExtResource("3_ssrue")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c34wb"]
+atlas = ExtResource("3_ssrue")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ow0dq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssrue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnjyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnkmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkryw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow0dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4kly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgwla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi5m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psowp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45urx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c34wb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_cqmt1")
 
@@ -22,14 +114,9 @@ script = ExtResource("1_cqmt1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_g7ett")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-axis = 1
-billboard = 2
-alpha_cut = 3
-texture_filter = 0
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 1, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_cqmt1")
 mesh = SubResource("PlaneMesh_ssrue")
 
@@ -41,3 +128,11 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="detectable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15460205, 0.9740906, 1.3457031)
 shape = SubResource("BoxShape3D_cqmt1")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 1.7598791, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_ow0dq")
+animation = &"idle"
+autoplay = "idle"
