@@ -1,4 +1,3 @@
-@tool
 extends TextEdit
 
 @onready var timer = $Timer

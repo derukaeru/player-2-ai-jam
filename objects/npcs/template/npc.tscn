@@ -1,6 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2spmgrbg6nwg"]
+[gd_scene load_steps=17 format=3 uid="uid://d2spmgrbg6nwg"]
 
 [ext_resource type="Script" uid="uid://ckph6vqrbej2c" path="res://objects/npcs/template/npc.gd" id="1_6s1l7"]
+[ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="2_hjrwa"]
+[ext_resource type="Script" uid="uid://bsi5tjg54www7" path="res://addons/player2/helpers/config/Player2AICharacterConfig.gd" id="2_sn54a"]
+[ext_resource type="Script" uid="uid://mt8gdygmb5og" path="res://addons/player2/helpers/config/Player2TTSConfig.gd" id="3_bc5td"]
+[ext_resource type="Script" uid="uid://bupnh0kqklshe" path="res://addons/player2/nodes/Player2AINPC.gd" id="3_kygah"]
+[ext_resource type="Script" uid="uid://fpb2ysodtcuy" path="res://addons/player2/helpers/tool_call/ToolCallFunctionDefinition.gd" id="4_j6em1"]
+[ext_resource type="Script" uid="uid://dt7mt3t7a08me" path="res://addons/player2/helpers/tool_call/ToolCallFunctionDefinitions.gd" id="5_pduht"]
+[ext_resource type="Resource" uid="uid://das4ap6qvtr75" path="res://addons/player2/chat_config.tres" id="8_8r2ai"]
+
+[sub_resource type="Resource" id="Resource_kygah"]
+script = ExtResource("3_bc5td")
+
+[sub_resource type="Resource" id="Resource_j6em1"]
+script = ExtResource("2_sn54a")
+tts_enabled = false
+tts = SubResource("Resource_kygah")
+metadata/_custom_type_script = "uid://bsi5tjg54www7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sn54a"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="Resource" id="Resource_cu1gb"]
+Resource = null
+resource_path = "res://objects/npcs/template/npc.tscn::Resource_cu1gb"
+script = ExtResource("5_pduht")
+
+[sub_resource type="Resource" id="Resource_mruoa"]
+script = ExtResource("3_bc5td")
+
+[sub_resource type="Resource" id="Resource_vyxgr"]
+script = ExtResource("2_sn54a")
+tts = SubResource("Resource_mruoa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kygah"]
+size = Vector3(1, 1.5, 0.29608154)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kygah"]
 
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_6s1l7")
+ai_character_config = SubResource("Resource_j6em1")
+
+[node name="Interactable" type="Area3D" parent="."]
+script = ExtResource("2_hjrwa")
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_sn54a")
+
+[node name="Player2AINPC" type="Node" parent="."]
+script = ExtResource("3_kygah")
+greet_on_entry = false
+tool_calls_function_definitions = SubResource("Resource_cu1gb")
+character_config = SubResource("Resource_vyxgr")
+chat_config = ExtResource("8_8r2ai")
+metadata/_custom_type_script = "uid://bupnh0kqklshe"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.008331299)
+shape = SubResource("BoxShape3D_kygah")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 0)
+mesh = SubResource("PlaneMesh_kygah")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="chat_received" from="Player2AINPC" to="." method="reply"]
+[connection signal="thinking_began" from="Player2AINPC" to="." method="thinking"]
+[connection signal="thinking_ended" from="Player2AINPC" to="." method="done_thinking"]

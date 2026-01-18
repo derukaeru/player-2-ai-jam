@@ -3,6 +3,8 @@ extends CharacterBody3D
 @export var speed: float = 170
 var can_move = true
 
+var curr_npc:CharacterBody3D
+
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 	if can_move:
@@ -27,3 +29,6 @@ func _physics_process(delta):
 	velocity.z = direction.z
 
 	move_and_slide()
+
+func text_sent(text):
+	curr_npc.get_node("Player2AINPC").chat(text)

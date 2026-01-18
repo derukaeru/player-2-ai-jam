@@ -82,7 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108398, 1.24
 shape = SubResource("BoxShape3D_gueig")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108394, -1.1257529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108394, -1.676125)
 shape = SubResource("BoxShape3D_gueig")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
@@ -93,18 +93,27 @@ shape = SubResource("BoxShape3D_1rfg5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.304846, 1.1010742, -1.2999268)
 shape = SubResource("BoxShape3D_1rfg5")
 
-[node name="Interactable" type="Area3D" parent="."]
+[node name="door" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.3028002)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_1rfg5")
 one_shot = false
 metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_r57st")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004486084, 1, -0.10668945)
 shape = SubResource("BoxShape3D_r57st")
 
-[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[node name="objects" type="Node3D" parent="."]
+
+[node name="Interactable" type="Area3D" parent="objects"]
+script = ExtResource("1_1rfg5")
+interactable_type = 1
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[connection signal="interacted" from="door" to="." method="_on_interactable_interacted"]

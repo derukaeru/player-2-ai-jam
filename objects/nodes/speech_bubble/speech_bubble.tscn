@@ -13,15 +13,16 @@ border_blend = true
 corner_detail = 1
 
 [node name="speech_bubble" type="TextEdit" groups=["speech_bubble"]]
-visible = false
 offset_top = 576.0
 offset_right = 1024.0
 offset_bottom = 648.0
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_6acpg")
 text = ". . ."
 script = ExtResource("1_6acpg")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="fade"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d17jjl1084g8g"]
+[gd_scene load_steps=8 format=3 uid="uid://d17jjl1084g8g"]
 
 [ext_resource type="PackedScene" uid="uid://cu5mtvx0ghuig" path="res://objects/player/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://cwduyoqq6ujso" path="res://scenes/worlds/alleyway.tscn" id="2_0wfyh"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" uid="uid://e244s3vp01fj" path="res://objects/player/camera_3d.gd" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dqpgd715gxpb8" path="res://objects/nodes/input_interface/input_interface.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://mg6pflw3e3bx" path="res://objects/nodes/speech_bubble/speech_bubble.tscn" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="7_o6xl0"]
 
 [node name="main" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5423031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.542303)
 input_ray_pickable = false
 
 [node name="world" type="Node3D" parent="." groups=["world"]]
@@ -18,15 +19,15 @@ input_ray_pickable = false
 [node name="alleyway" parent="world" instance=ExtResource("2_0wfyh")]
 
 [node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target") groups=["camera_rig"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6485686, -5.871877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3797698, -4.4292135)
 script = ExtResource("3_tbgi4")
 target = NodePath("../player")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, -1.7429297e-08, 8.5667736e-08, -3.8026555e-09, 0.9876692, 0.15655513, -8.7340034e-08, 0.15655513, -0.9876692, 0, 0.7514987, 0)
+transform = Transform3D(-1, 1.2015783e-08, -8.659308e-08, 0, 0.99050945, 0.13744454, 8.742278e-08, 0.13744454, -0.99050945, 0, 0, -2.4634304)
 projection = 1
 fov = 68.5
-size = 4.745
+size = 3.95
 script = ExtResource("4_o6xl0")
 
 [node name="gui" type="Control" parent="CameraRig/Camera3D"]
@@ -41,18 +42,24 @@ mouse_filter = 2
 [node name="input_interface" parent="CameraRig/Camera3D/gui" instance=ExtResource("4_tefeu")]
 visible = false
 layout_mode = 1
-offset_top = -64.0
+offset_top = -80.0
 mouse_filter = 2
 
 [node name="speech_bubble" parent="CameraRig/Camera3D/gui" instance=ExtResource("5_o6xl0")]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
+offset_top = -80.0
 offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+
+[node name="npc" parent="." instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7523284, 0, 2.3711948)
+
+[connection signal="text_sent" from="CameraRig/Camera3D/gui/input_interface" to="player" method="text_sent"]

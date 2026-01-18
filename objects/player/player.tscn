@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu5mtvx0ghuig"]
+[gd_scene load_steps=6 format=3 uid="uid://cu5mtvx0ghuig"]
 
 [ext_resource type="Script" uid="uid://1chjiidio7ov" path="res://objects/player/player.gd" id="1_cqmt1"]
 
@@ -11,6 +11,9 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_ssrue"]
 size = Vector2(1, 2)
 orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqmt1"]
+size = Vector3(3.1866455, 2.9481812, 3.6914063)
 
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_cqmt1")
@@ -29,3 +32,12 @@ texture_filter = 0
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_cqmt1")
 mesh = SubResource("PlaneMesh_ssrue")
+
+[node name="detectable" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detectable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15460205, 0.9740906, 1.3457031)
+shape = SubResource("BoxShape3D_cqmt1")

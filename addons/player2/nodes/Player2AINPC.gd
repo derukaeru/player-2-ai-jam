@@ -1,5 +1,4 @@
 @tool
-## AI NPC using the Player2 API.
 class_name Player2AINPC
 extends Node
 
@@ -526,7 +525,6 @@ func _generate_manual_tools() -> Array[AIToolCall]:
 
 ## Generate our schema tool calls
 func _generate_schema_tools() -> Array[Player2Schema.Tool]:
-
 	var our_tools : Array[AIToolCall] = _generate_manual_tools()
 
 	var result : Array[Player2Schema.Tool] = []

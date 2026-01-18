@@ -42,5 +42,5 @@ func interact():
 	used = true
 	emit_signal("interacted", self)
 
-func _show_highlight(enabled: bool):
+func _show_highlight(_enabled: bool):
 	pass

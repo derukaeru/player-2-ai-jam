@@ -98,7 +98,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -8, 
 mesh = SubResource("PlaneMesh_mtk16")
 
 [node name="door" type="Area3D" parent="apartment_building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2951117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9878445, 0, 3.2951117)
 script = ExtResource("1_ri6om")
 interactable_type = 2
 interact_id = "apartment_door"
