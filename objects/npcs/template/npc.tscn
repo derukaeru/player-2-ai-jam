@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2spmgrbg6nwg"]
+[gd_scene load_steps=15 format=3 uid="uid://d2spmgrbg6nwg"]
 
 [ext_resource type="Script" uid="uid://ckph6vqrbej2c" path="res://objects/npcs/template/npc.gd" id="1_6s1l7"]
 [ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="2_hjrwa"]
@@ -33,14 +33,11 @@ script = ExtResource("3_bc5td")
 script = ExtResource("2_sn54a")
 tts = SubResource("Resource_mruoa")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kygah"]
-size = Vector3(1, 1.5, 0.29608154)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_kygah"]
-
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_6s1l7")
+ai_description = "Just a passerby who knows nothing.NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when the cops pulled up near the apartment block he was walking near."
 ai_character_config = SubResource("Resource_j6em1")
+ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene"
 
 [node name="Interactable" type="Area3D" parent="."]
 script = ExtResource("2_hjrwa")
@@ -58,16 +55,13 @@ character_config = SubResource("Resource_vyxgr")
 chat_config = ExtResource("8_8r2ai")
 metadata/_custom_type_script = "uid://bupnh0kqklshe"
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-billboard = 2
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.008331299)
-shape = SubResource("BoxShape3D_kygah")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 0)
-mesh = SubResource("PlaneMesh_kygah")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 1.76, 0)
+billboard = 2
+texture_filter = 0
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="chat_received" from="Player2AINPC" to="." method="reply"]

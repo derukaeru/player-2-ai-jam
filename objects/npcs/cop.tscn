@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvgi2bu0ctg7e"]
+
+[ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_lk6jr"]
+[ext_resource type="Texture2D" uid="uid://yecp61ke367l" path="res://assets/textures/cop/idle.png" id="2_xiu82"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kq8d"]
+atlas = ExtResource("2_xiu82")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svlfl"]
+atlas = ExtResource("2_xiu82")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18f0v"]
+atlas = ExtResource("2_xiu82")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k2lm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kq8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svlfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18f0v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[node name="cop" instance=ExtResource("1_lk6jr")]
+ai_behaviour = "Slightly gloomy and serious, but can crack jokes. 1980's style. Stern. Cop"
+
+[node name="AnimatedSprite3D" parent="." index="3"]
+transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 1.76, 0)
+flip_h = true
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_8k2lm")
+autoplay = "default"
+frame_progress = 0.47862637

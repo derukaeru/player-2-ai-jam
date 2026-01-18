@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3ypmxxwei2ar"]
+
+[ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_53ymm"]
+[ext_resource type="Texture2D" uid="uid://yecp61ke367l" path="res://assets/textures/cop/idle.png" id="2_k68mi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxsh3"]
+atlas = ExtResource("2_k68mi")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk0x8"]
+atlas = ExtResource("2_k68mi")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ibu1"]
+atlas = ExtResource("2_k68mi")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scwmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxsh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk0x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ibu1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="cop_2" instance=ExtResource("1_53ymm")]
+ai_description = "The first cop on the scene. the only information he has is that the suspect was wearing a dark coat, said by a passerby. "
+ai_behaviour = "Slightly gloomy but can crack jokes. 1980's style. shaken. scrawny. slightly stutters. dont say anything unless asked. the player is the detective needed on scene"
+
+[node name="AnimatedSprite3D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_scwmv")
+autoplay = "default"
+frame_progress = 0.44178197

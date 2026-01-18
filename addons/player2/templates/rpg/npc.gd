@@ -1,4 +1,4 @@
-class_name NPC
+class_name NPC2
 extends CharacterBody2D
 
 

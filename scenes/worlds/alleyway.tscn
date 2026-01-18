@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwduyoqq6ujso"]
+[gd_scene load_steps=21 format=3 uid="uid://cwduyoqq6ujso"]
 
 [ext_resource type="Script" uid="uid://bvfie3jcfma3y" path="res://scenes/worlds/alleyway.gd" id="1_56ih2"]
 [ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_ri6om"]
 [ext_resource type="Texture2D" uid="uid://buwpemwr6pti2" path="res://assets/textures/bricks/brick_modern_05.jpg" id="2_b68ot"]
+[ext_resource type="PackedScene" uid="uid://bvgi2bu0ctg7e" path="res://objects/npcs/cop.tscn" id="4_mtk16"]
+[ext_resource type="PackedScene" uid="uid://d3ypmxxwei2ar" path="res://objects/npcs/cop_2.tscn" id="5_6tta0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jfo6h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -144,5 +146,11 @@ shape = SubResource("BoxShape3D_b68ot")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -3.5)
 shape = SubResource("BoxShape3D_mtk16")
+
+[node name="cop" parent="." instance=ExtResource("4_mtk16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.198712, 0, 0)
+
+[node name="cop_2" parent="." instance=ExtResource("5_6tta0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8036003, 0, 0)
 
 [connection signal="interacted" from="apartment_building/door" to="." method="_on_door_interacted"]
