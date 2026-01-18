@@ -26,6 +26,11 @@ Player2API="*res://addons/player2/helpers/api.gd"
 Global="*res://scripts/global.gd"
 GameState="*res://scripts/gamestate.gd"
 
+[display]
+
+window/size/viewport_width=896
+window/size/viewport_height=488
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/player2/plugin.cfg")

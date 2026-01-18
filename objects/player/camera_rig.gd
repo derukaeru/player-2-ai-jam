@@ -9,7 +9,8 @@ var limit_left = 4.9
 var limit_right = -3.9
 
 func _ready():
-	alley_config()
+	#alley_config()
+	room_config()
 
 func _process(delta):
 	if not target:
@@ -29,13 +30,15 @@ func _process(delta):
 	global_position = pos
 
 func room_config():
-	position = Vector3(0, 2, -3.9)
-	$Camera3D.rotation_degrees = Vector3(-3.8, -180, 0)
-	limit_left = 2.6
-	limit_right = -2.6
+	position = Vector3(0, 1.8, -3)
+	$Camera3D.rotation_degrees = Vector3(-2, -180, 0)
+	limit_left = 2.5
+	limit_right = -2.5
+	$Camera3D.set_perspective(68.5, 0.05, 4000.0)
 
 func alley_config():
 	position = Vector3(0, 3.2, -7.35)
 	$Camera3D.rotation_degrees = Vector3(2.5, -180, 0)
 	limit_left = 5
 	limit_right = -4.8
+	$Camera3D.set_perspective(75.0, 0.05, 4000.0)

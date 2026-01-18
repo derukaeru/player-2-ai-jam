@@ -1,4 +1,4 @@
 extends Node3D
 
 func _on_door_interacted(interactable):
-	print(interactable.name)
+	Global.change_world(1)

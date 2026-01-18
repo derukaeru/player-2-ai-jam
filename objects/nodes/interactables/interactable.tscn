@@ -3,4 +3,6 @@
 [ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_dufhs"]
 
 [node name="interactable" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_dufhs")

@@ -1,4 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2qltjqax28l7"]
+[gd_scene load_steps=15 format=3 uid="uid://d2qltjqax28l7"]
+
+[ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_1rfg5"]
+[ext_resource type="Script" uid="uid://bfufvjqdqt2ng" path="res://scenes/worlds/room.gd" id="1_r57st"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gueig"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,11 +18,13 @@ tonemap_mode = 2
 [sub_resource type="PlaneMesh" id="PlaneMesh_gueig"]
 size = Vector2(12, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gueig"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_1rfg5"]
-size = Vector2(12, 4)
+size = Vector2(12, 3)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r57st"]
-size = Vector2(5, 4)
+size = Vector2(5, 3)
 orientation = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jrrc4"]
@@ -31,7 +36,14 @@ size = Vector3(16.759644, 3.2216797, 0.5185547)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1rfg5"]
 size = Vector3(0.63964844, 3.2021484, 5.369873)
 
+[sub_resource type="BoxMesh" id="BoxMesh_r57st"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r57st"]
+size = Vector3(1.2294312, 2, 1.2133789)
+
 [node name="room" type="Node3D"]
+script = ExtResource("1_r57st")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r57st")
@@ -41,33 +53,36 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 mesh = SubResource("PlaneMesh_gueig")
 
 [node name="wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 1)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5, 2)
+material_override = SubResource("StandardMaterial3D_gueig")
 mesh = SubResource("PlaneMesh_1rfg5")
 
 [node name="right_wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, -0.5)
 mesh = SubResource("PlaneMesh_r57st")
 
 [node name="left_wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6, 2, -1.5)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6, 1.5, -0.5)
 mesh = SubResource("PlaneMesh_r57st")
 
 [node name="ceiling" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1.0000001, 0, 0, 0, -1.0000001, 0, 4, -1.5)
+transform = Transform3D(1, 0, 0, 0, -1.0000001, 0, 0, 0, -1.0000001, 0, 3, -0.5)
 mesh = SubResource("PlaneMesh_jrrc4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108398, 1.2407227)
 shape = SubResource("BoxShape3D_gueig")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108394, -1.1257528)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085754395, 1.1108394, -1.1257529)
 shape = SubResource("BoxShape3D_gueig")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
@@ -77,3 +92,19 @@ shape = SubResource("BoxShape3D_1rfg5")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.304846, 1.1010742, -1.2999268)
 shape = SubResource("BoxShape3D_1rfg5")
+
+[node name="Interactable" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.3028002)
+script = ExtResource("1_1rfg5")
+one_shot = false
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_r57st")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004486084, 1, -0.10668945)
+shape = SubResource("BoxShape3D_r57st")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

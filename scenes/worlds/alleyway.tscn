@@ -115,6 +115,7 @@ transform = Transform3D(1.4309125, 0, 0, 0, 5.1407824, 0, 0, 0, 0.72594666, 0, 0
 mesh = SubResource("BoxMesh_56ih2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="apartment_building"]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.917225, 1.4909668, 2.2733765)

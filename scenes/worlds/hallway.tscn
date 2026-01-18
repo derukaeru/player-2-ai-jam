@@ -1,3 +1,117 @@
-[gd_scene format=3 uid="uid://tfrk1xt2kl1y"]
+[gd_scene load_steps=14 format=3 uid="uid://tfrk1xt2kl1y"]
+
+[ext_resource type="Script" uid="uid://ctiybtck3ye61" path="res://scenes/worlds/hallway.gd" id="1_bg3ta"]
+[ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="2_qsf2n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tpgcj"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_bg3ta"]
+sky_material = SubResource("ProceduralSkyMaterial_tpgcj")
+
+[sub_resource type="Environment" id="Environment_qsf2n"]
+background_mode = 2
+sky = SubResource("Sky_bg3ta")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tpgcj"]
+size = Vector2(18, 4)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bg3ta"]
+size = Vector2(4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f4d07"]
+size = Vector3(2, 5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f34q8"]
+size = Vector3(19, 5, 0.50439453)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m356l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l3s3t"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kyi8s"]
+size = Vector3(1, 2.4975586, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgwrx"]
+size = Vector3(1, 2, 1)
 
 [node name="hallway" type="Node3D"]
+script = ExtResource("1_bg3ta")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qsf2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_tpgcj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, 0, 2, 1)
+mesh = SubResource("PlaneMesh_tpgcj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, -1.3909066e-08, 0, 1.3909066e-08, -1, 0, 4, 0)
+mesh = SubResource("PlaneMesh_tpgcj")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 9, 2, 0)
+mesh = SubResource("PlaneMesh_bg3ta")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.3711385e-08, 0.99999994, -5.9604645e-08, 1, -4.371139e-08, 0, -8.881784e-16, -5.9604645e-08, -0.99999994, -9, 2, 0)
+mesh = SubResource("PlaneMesh_bg3ta")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, -0.5)
+shape = SubResource("BoxShape3D_f4d07")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2, -0.5)
+shape = SubResource("BoxShape3D_f4d07")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.2478027)
+shape = SubResource("BoxShape3D_f34q8")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.75219727)
+shape = SubResource("BoxShape3D_f34q8")
+
+[node name="apartment_door" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1.3299506)
+script = ExtResource("2_qsf2n")
+interactable_type = 2
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="apartment_door"]
+shape = SubResource("BoxShape3D_m356l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="apartment_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_l3s3t")
+
+[node name="outside_door" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4629774, 0, 1.2916365)
+script = ExtResource("2_qsf2n")
+interactable_type = 2
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="outside_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7487793, 0)
+shape = SubResource("BoxShape3D_kyi8s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="outside_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_sgwrx")
+
+[connection signal="interacted" from="apartment_door" to="." method="_on_apartment_door_interacted"]
+[connection signal="interacted" from="outside_door" to="." method="_on_outside_door_interacted"]
