@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2qltjqax28l7"]
+[gd_scene load_steps=16 format=3 uid="uid://d2qltjqax28l7"]
 
 [ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_1rfg5"]
 [ext_resource type="Script" uid="uid://bfufvjqdqt2ng" path="res://scenes/worlds/room.gd" id="1_r57st"]
@@ -41,6 +41,8 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r57st"]
 size = Vector3(1.2294312, 2, 1.2133789)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jrrc4"]
 
 [node name="room" type="Node3D"]
 script = ExtResource("1_r57st")
@@ -111,9 +113,13 @@ shape = SubResource("BoxShape3D_r57st")
 
 [node name="objects" type="Node3D" parent="."]
 
-[node name="Interactable" type="Area3D" parent="objects"]
+[node name="body" type="Area3D" parent="objects"]
 script = ExtResource("1_1rfg5")
 interactable_type = 1
 metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objects/body"]
+shape = SubResource("BoxShape3D_jrrc4")
+
 [connection signal="interacted" from="door" to="." method="_on_interactable_interacted"]
+[connection signal="interacted" from="objects/body" to="." method="_on_body_interacted"]

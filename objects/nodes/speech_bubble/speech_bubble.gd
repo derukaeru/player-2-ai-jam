@@ -14,3 +14,6 @@ func fade():
 
 func _ready():
 	self.hide()
+
+func _on_gui_input(_event):
+	pass
