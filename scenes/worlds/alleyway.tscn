@@ -65,17 +65,17 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="sidewalk" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.18636, 0, 0, 0, 1, 0, 0, 0, 1.4768102, 0, 0, 7.3686237)
+transform = Transform3D(4.18636, 0, 0, 0, 1, 0, 0, 0, 1.4768102, 0, 0, 4.3686237)
 material_override = SubResource("StandardMaterial3D_jfo6h")
 mesh = SubResource("PlaneMesh_jfo6h")
 
 [node name="road" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.18636, 0, 0, 0, 1, 0, 0, 0, 0.4063251, 0, 0, -2.039284)
+transform = Transform3D(4.18636, 0, 0, 0, 1, 0, 0, 0, 0.4063251, 0, 0, -5.0392838)
 material_override = SubResource("StandardMaterial3D_ri6om")
 mesh = SubResource("PlaneMesh_jfo6h")
 
 [node name="apartment_building" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="apartment_building"]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -14.5, 10, 0)
@@ -130,11 +130,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.923689, 1.4909668, 6.27337
 shape = SubResource("BoxShape3D_56ih2")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 1.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.5, -2)
 shape = SubResource("BoxShape3D_b68ot")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 1.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, -2)
 shape = SubResource("BoxShape3D_b68ot")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="apartment_building/StaticBody3D"]

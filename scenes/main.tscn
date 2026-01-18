@@ -9,7 +9,7 @@
 
 [node name="main" type="Node3D"]
 
-[node name="player" parent="." groups=["player"] instance=ExtResource("1_o5qli")]
+[node name="player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5423031)
 input_ray_pickable = false
 
@@ -18,14 +18,15 @@ input_ray_pickable = false
 [node name="alleyway" parent="world" instance=ExtResource("2_0wfyh")]
 
 [node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target") groups=["camera_rig"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6485686, -3.289522)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6485686, -5.871877)
 script = ExtResource("3_tbgi4")
 target = NodePath("../player")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-transform = Transform3D(-1, 1.1307092e-14, -8.742278e-08, -3.402394e-10, 0.9999925, 0.003892012, 8.74221e-08, 0.003892012, -0.9999925, 0, 0, 0)
+transform = Transform3D(-1, -1.7429297e-08, 8.5667736e-08, -3.8026555e-09, 0.9876692, 0.15655513, -8.7340034e-08, 0.15655513, -0.9876692, 0, 0.7514987, 0)
+projection = 1
 fov = 68.5
-size = 3.945
+size = 4.745
 script = ExtResource("4_o6xl0")
 
 [node name="gui" type="Control" parent="CameraRig/Camera3D"]

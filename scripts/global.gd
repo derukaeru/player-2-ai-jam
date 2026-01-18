@@ -22,10 +22,13 @@ func change_world(id):
 	
 	if id == 0:
 		gm().get_node("world").add_child(load("res://scenes/worlds/alleyway.tscn").instantiate())
+		gn("camera_rig").alley_config()
 	elif id == 1:
 		gm().get_node("world").add_child(load("res://scenes/worlds/hallway.tscn").instantiate())
+		gn("camera_rig").room_config()
 	elif id == 2:
 		gm().get_node("world").add_child(load("res://scenes/worlds/room.tscn").instantiate())
+		gn("camera_rig").room_config()
 	
 	curr_world = id
 	
