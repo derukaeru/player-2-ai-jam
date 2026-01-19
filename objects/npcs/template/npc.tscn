@@ -35,7 +35,8 @@ tts = SubResource("Resource_mruoa")
 
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_6s1l7")
-ai_description = "Just a passerby who knows nothing.NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when the cops pulled up near the apartment block he was walking near."
+ai_name = ""
+ai_description = ".NEVER SAY ANYTHING UNLESS ASKED. "
 ai_character_config = SubResource("Resource_j6em1")
 ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene"
 
@@ -62,6 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.008331299)
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 1.76, 0)
 billboard = 2
+shaded = true
 texture_filter = 0
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

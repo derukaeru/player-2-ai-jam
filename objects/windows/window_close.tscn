@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://diepf10qs88vt"]
+
+[ext_resource type="Texture2D" uid="uid://kimmsti4xi6x" path="res://assets/textures/alleyway/window_closed.png" id="1_juyie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tihnb"]
+albedo_texture = ExtResource("1_juyie")
+uv1_scale = Vector3(3.205, 2, 1)
+uv1_offset = Vector3(0.81, 0, 0)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_38r7m"]
+material = SubResource("StandardMaterial3D_tihnb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_juyie"]
+albedo_color = Color(0.12427918, 0.09415155, 0.16904354, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tihnb"]
+material = SubResource("StandardMaterial3D_juyie")
+
+[node name="window_close" type="MeshInstance3D"]
+transform = Transform3D(1.2, 0, 0, 0, 1.6, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_38r7m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 0.09999997, 0, 0, 0, 1.2, 0, -0.4907061, 0)
+mesh = SubResource("BoxMesh_tihnb")

@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvgi2bu0ctg7e"]
+[gd_scene load_steps=8 format=3 uid="uid://bvgi2bu0ctg7e"]
 
 [ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_lk6jr"]
 [ext_resource type="Texture2D" uid="uid://yecp61ke367l" path="res://assets/textures/cop/idle.png" id="2_xiu82"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xiu82"]
+size = Vector3(1, 1, 0.32043457)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2kq8d"]
 atlas = ExtResource("2_xiu82")
@@ -33,13 +36,14 @@ animations = [{
 }]
 
 [node name="cop" instance=ExtResource("1_lk6jr")]
+ai_name = "Officer Marx"
 ai_behaviour = "Slightly gloomy and serious, but can crack jokes. 1980's style. Stern. Cop"
 
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.063446045)
+shape = SubResource("BoxShape3D_xiu82")
+
 [node name="AnimatedSprite3D" parent="." index="3"]
-transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 1.76, 0)
-flip_h = true
-billboard = 2
-texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_8k2lm")
 autoplay = "default"
 frame_progress = 0.47862637

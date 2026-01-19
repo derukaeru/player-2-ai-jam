@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://sbl7o85xu4m6"]
+
+[ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_hufx7"]
+[ext_resource type="Shader" uid="uid://c76mt11ko4wof" path="res://misc/shaders/highlight.gdshader" id="2_e82w8"]
+[ext_resource type="Texture2D" uid="uid://dwqq8v77lbapu" path="res://assets/textures/street_vendor/idle.png" id="2_q3o7t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e82w8"]
+size = Vector3(0.63934326, 1.921875, 0.25743103)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkns1"]
+shader = ExtResource("2_e82w8")
+shader_parameter/outline_width = 1.0
+shader_parameter/lower_limit = Vector2(1, 1)
+shader_parameter/upper_limit = Vector2(1, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkns1"]
+atlas = ExtResource("2_q3o7t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qun6y"]
+atlas = ExtResource("2_q3o7t")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd85a"]
+atlas = ExtResource("2_q3o7t")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viaek"]
+atlas = ExtResource("2_q3o7t")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viqca"]
+atlas = ExtResource("2_q3o7t")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivecv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkns1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qun6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd85a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viaek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viqca")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="street_vendor" instance=ExtResource("1_hufx7")]
+ai_name = "Ryn Hale"
+ai_save_conversation_history = true
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014343262, 0.935791, 0.011711121)
+shape = SubResource("BoxShape3D_e82w8")
+
+[node name="AnimatedSprite3D" parent="." index="3"]
+material_overlay = SubResource("ShaderMaterial_nkns1")
+sprite_frames = SubResource("SpriteFrames_ivecv")
+autoplay = "default"
+frame_progress = 0.6311698

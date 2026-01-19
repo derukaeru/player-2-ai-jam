@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://debg2lmueqcwo"]
+
+[ext_resource type="Texture2D" uid="uid://d0qcwehw3cm8l" path="res://assets/textures/door/door_reverse.png" id="1_acylj"]
+[ext_resource type="Texture2D" uid="uid://ciqsm163p206j" path="res://assets/textures/door/door.png" id="1_mmejw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acylj"]
+albedo_texture = ExtResource("1_acylj")
+uv1_scale = Vector3(3.005, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_vneq7"]
+material = SubResource("StandardMaterial3D_acylj")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4g26"]
+albedo_texture = ExtResource("1_mmejw")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_y6awe"]
+material = SubResource("StandardMaterial3D_h4g26")
+size = Vector3(1, 2, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_vneq7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("BoxMesh_y6awe")

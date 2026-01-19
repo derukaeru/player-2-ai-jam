@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://ed007ahxx5g6"]
+
+[ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_5kolv"]
+[ext_resource type="Texture2D" uid="uid://b6e0yprsyc6nk" path="res://assets/textures/passerby/idle.png" id="2_vje5l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5kolv"]
+size = Vector3(0.6750488, 1, 0.23931885)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23ilu"]
+atlas = ExtResource("2_vje5l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy0ld"]
+atlas = ExtResource("2_vje5l")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k00j7"]
+atlas = ExtResource("2_vje5l")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rw6w"]
+atlas = ExtResource("2_vje5l")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5wt7"]
+atlas = ExtResource("2_vje5l")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obcyx"]
+atlas = ExtResource("2_vje5l")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhgjd"]
+atlas = ExtResource("2_vje5l")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gv42v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23ilu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy0ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k00j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rw6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5wt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obcyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhgjd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="passerby" instance=ExtResource("1_5kolv")]
+ai_name = "Mara"
+ai_description = "Just a homeless passerby who knows nothing. NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when the cops pulled up near the apartment block he was walking near."
+ai_behaviour = "1980's style. NEVER SAY ANYTHING UNLESS ASKED. "
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06750488, 0.75, 0.048950195)
+shape = SubResource("BoxShape3D_5kolv")
+
+[node name="AnimatedSprite3D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_gv42v")
+autoplay = "default"
+frame_progress = 0.25573692

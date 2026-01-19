@@ -19,32 +19,35 @@ func _process(delta):
 	var target_pos = target.global_position
 	
 	if follow_x:
-		pos.x = lerp(pos.x, target_pos.x, 5.0 * delta)
+		pos.x = lerp(pos.x, target_pos.x, 4.4 * delta)
 	if follow_y:
-		pos.y = lerp(pos.x, target_pos.y, 5.0 * delta)
+		pos.y = lerp(pos.x, target_pos.y, 4.4 * delta)
 	if follow_z:
-		pos.z = lerp(pos.x, target_pos.y, 5.0 * delta)
+		pos.z = lerp(pos.x, target_pos.y, 4.4 * delta)
 	
 	pos.x = clamp(pos.x, limit_right, limit_left)
 	global_position = pos
 
 func room_config():
-	position = Vector3(0, 2.695, -4.429)
-	$Camera3D.rotation_degrees = Vector3(-10.4, -180, 0)
+	position = Vector3(0, 1.431, -3.959)
+	$Camera3D.rotation_degrees = Vector3(-1, -180, 0)
 	limit_left = 2.5
 	limit_right = -2.5
-	$Camera3D.set_orthogonal(3.78, 0.05, 4000.0)
+	#$Camera3D.set_orthogonal(3.78, 0.05, 4000.0)
+	$Camera3D.set_perspective(53.5, 0.05, 4000.0)
 
 func hallway_config():
-	position = Vector3(0, 2.9, -4.429)
-	$Camera3D.rotation_degrees = Vector3(-10.4, -180, 0)
-	limit_left = 6
-	limit_right = -6
-	$Camera3D.set_orthogonal(3.78, 0.05, 4000.0)
+	position = Vector3(0, 1.431, -3.959)
+	$Camera3D.rotation_degrees = Vector3(-1, -180, 0)
+	limit_left = 5.5
+	limit_right = -5.5
+	#$Camera3D.set_orthogonal(3.78, 0.05, 4000.0)
+	$Camera3D.set_perspective(53.5, 0.05, 4000.0)
 
 func alley_config():
-	position = Vector3(0, 2.6, -5.872)
-	$Camera3D.rotation_degrees = Vector3(-8, -180, 0)
+	position = Vector3(0, 3.4, -6.892)
+	$Camera3D.rotation_degrees = Vector3(-12.0, -180, 0)
 	limit_left = 8
 	limit_right = -9
-	$Camera3D.set_orthogonal(4.745, 0.05, 4000.0)
+	$Camera3D.set_perspective(53.5, 0.05, 4000.0)
+	#$Camera3D.set_orthogonal(6.918, 0.05, 4000.0)

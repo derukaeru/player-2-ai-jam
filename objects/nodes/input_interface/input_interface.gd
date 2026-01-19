@@ -26,6 +26,10 @@ func _ready() -> void:
 				if event.pressed and event.keycode == KEY_ENTER:
 					text.accept_event()
 					send()
+					self.hide()
+				if event.pressed and event.keycode == KEY_ESCAPE:
+					self.hide()
+					Global.gn("player").can_move = true
 	)
 
 	self.visibility_changed.connect(func():

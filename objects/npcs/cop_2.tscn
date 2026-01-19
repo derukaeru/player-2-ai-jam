@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3ypmxxwei2ar"]
+[gd_scene load_steps=8 format=3 uid="uid://d3ypmxxwei2ar"]
 
 [ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_53ymm"]
 [ext_resource type="Texture2D" uid="uid://yecp61ke367l" path="res://assets/textures/cop/idle.png" id="2_k68mi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53ymm"]
+size = Vector3(1, 1, 0.2746582)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxsh3"]
 atlas = ExtResource("2_k68mi")
@@ -33,8 +36,13 @@ animations = [{
 }]
 
 [node name="cop_2" instance=ExtResource("1_53ymm")]
+ai_name = "Officer Keene"
 ai_description = "The first cop on the scene. the only information he has is that the suspect was wearing a dark coat, said by a passerby. "
 ai_behaviour = "Slightly gloomy but can crack jokes. 1980's style. shaken. scrawny. slightly stutters. dont say anything unless asked. the player is the detective needed on scene"
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.03451538)
+shape = SubResource("BoxShape3D_53ymm")
 
 [node name="AnimatedSprite3D" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_scwmv")

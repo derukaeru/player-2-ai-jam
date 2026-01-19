@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ptitrpvja58p"]
+
+[ext_resource type="Texture2D" uid="uid://ciqsm163p206j" path="res://assets/textures/door/door.png" id="1_g0fro"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_slxnm"]
+albedo_texture = ExtResource("1_g0fro")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_8f1ue"]
+material = SubResource("StandardMaterial3D_slxnm")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g0fro"]
+size = Vector3(1, 2, 1)
+
+[node name="door" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_8f1ue")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_g0fro")

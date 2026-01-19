@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2qrs4s6scdsl"]
+
+[ext_resource type="Texture2D" uid="uid://o143kgthq2ib" path="res://assets/textures/alleyway/window_light.png" id="1_2a1m7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tihnb"]
+albedo_texture = ExtResource("1_2a1m7")
+uv1_scale = Vector3(3.205, 2, 1)
+uv1_offset = Vector3(0.81, 0, 0)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_38r7m"]
+material = SubResource("StandardMaterial3D_tihnb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_juyie"]
+albedo_color = Color(0.12427918, 0.09415155, 0.16904354, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2a1m7"]
+material = SubResource("StandardMaterial3D_juyie")
+
+[node name="window_open" type="MeshInstance3D"]
+transform = Transform3D(1.2, 0, 0, 0, 1.6, 0, 0, 0, 1, 0.74702716, 3, 1)
+mesh = SubResource("BoxMesh_38r7m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 0.09999997, 0, 0, 0, 1.2, 0, -0.4907061, 0)
+mesh = SubResource("BoxMesh_2a1m7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.82476074, 0, -0.077182844, 0, 0.625, 0, -7.4505806e-08, 0, -1.0103941, 0, 0, -5)
+spot_range = 6.4344225
+spot_angle = 9.917923

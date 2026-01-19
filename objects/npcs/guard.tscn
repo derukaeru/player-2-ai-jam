@@ -1,0 +1,118 @@
+[gd_scene load_steps=18 format=3 uid="uid://csin01vucwsnb"]
+
+[ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_6oael"]
+[ext_resource type="Texture2D" uid="uid://uqta8g5jt0sg" path="res://assets/textures/guard/idle.png" id="2_m6chw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6chw"]
+size = Vector3(1, 1, 0.2788086)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3450"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmecd"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ohb"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fprk"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7hty"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn2vt"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15113"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_774ca"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ilp4"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0kb3"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxm6l"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13grm"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1v6l"]
+atlas = ExtResource("2_m6chw")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h30jh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3450")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmecd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ohb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fprk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7hty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn2vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15113")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_774ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ilp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0kb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxm6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13grm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1v6l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="guard" instance=ExtResource("1_6oael")]
+ai_description = "NEVER SAY ANYTHING UNLESS ASKED. "
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.013397217)
+shape = SubResource("BoxShape3D_m6chw")
+
+[node name="AnimatedSprite3D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_h30jh")
+autoplay = "default"
+frame_progress = 0.53245217

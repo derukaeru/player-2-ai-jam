@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://rpj4w8lnl0pd"]
+
+[ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="1_6bb1f"]
+[ext_resource type="Texture2D" uid="uid://064by1gv7bqt" path="res://assets/textures/neighbor/idle.png" id="2_b64yh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bsin"]
+atlas = ExtResource("2_b64yh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am4gc"]
+atlas = ExtResource("2_b64yh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_376wl"]
+atlas = ExtResource("2_b64yh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwusd"]
+atlas = ExtResource("2_b64yh")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7arl"]
+atlas = ExtResource("2_b64yh")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0m1q"]
+atlas = ExtResource("2_b64yh")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ixq8k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bsin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am4gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_376wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwusd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7arl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0m1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="neighbor" instance=ExtResource("1_6bb1f")]
+visible = false
+ai_name = "Ken Voss"
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.03918457)
+
+[node name="AnimatedSprite3D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_ixq8k")
+autoplay = "default"
+frame_progress = 0.14310774
+
+[node name="enter_apartment" type="Timer" parent="." index="4"]
+wait_time = 4.0
+one_shot = true
+
+[node name="leave_apartment" type="Timer" parent="." index="5"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="enter_apartment" to="." method="_on_enter_apartment_timeout"]
+[connection signal="timeout" from="leave_apartment" to="." method="_on_leave_apartment_timeout"]

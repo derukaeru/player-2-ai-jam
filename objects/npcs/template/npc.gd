@@ -21,6 +21,12 @@ func _ready() -> void:
 	if ai_save_conversation_history:
 		$Player2AINPC.load_conversation_history()
 
+func _process(_delta):
+	if Global.gn("player").position.x > self.position.x:
+		$AnimatedSprite3D.flip_h = true
+	else:
+		$AnimatedSprite3D.flip_h = false
+
 func _on_interactable_interacted(_interactable):
 	Global.gn("player").curr_npc = self
 	Global.gn("input_interface").show()
@@ -35,3 +41,13 @@ func thinking():
 func done_thinking():
 	Global.gn("input_interface").hide()
 	Global.gn("input_interface").get_node("Thinking Animation").hide()
+
+
+func _on_enter_apartment_timeout():
+	self.hide()
+	# play sound
+
+func _on_leave_apartment_timeout():
+	self.show()
+	$enter_apartment.start()
+	# play sound
