@@ -6,6 +6,8 @@ var can_move = true
 var curr_npc:CharacterBody3D
 var flip:bool = false
 
+var notebook_open : bool = false
+
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 	if can_move:
@@ -37,3 +39,16 @@ func _physics_process(delta):
 
 func text_sent(text):
 	curr_npc.get_node("Player2AINPC").chat(text)
+
+
+func _on_toggle_notebook_pressed():
+	var nb_ui = Global.gn("camera_rig").get_node("Camera3D/gui/notebook_ui")
+	if notebook_open:
+		nb_ui.get_node("AnimationPlayer").play_backwards("move")
+		await nb_ui.get_node("AnimationPlayer").animation_finished
+		notebook_open = false
+	else:
+		nb_ui.get_node("AnimationPlayer").play("move")
+		await nb_ui.get_node("AnimationPlayer").animation_finished
+		notebook_open = true
+		

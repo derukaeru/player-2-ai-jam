@@ -43,6 +43,11 @@ world=""
 player=""
 camera_rig=""
 
+[gui]
+
+theme/default_font_antialiasing=0
+theme/custom_font="uid://cdhe2f07w2kel"
+
 [input]
 
 left={

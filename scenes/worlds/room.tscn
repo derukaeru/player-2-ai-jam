@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2qltjqax28l7"]
+[gd_scene load_steps=17 format=3 uid="uid://d2qltjqax28l7"]
 
 [ext_resource type="Script" uid="uid://dsmaf4bqvs4ge" path="res://objects/nodes/interactables/interactable.gd" id="1_1rfg5"]
 [ext_resource type="Script" uid="uid://bfufvjqdqt2ng" path="res://scenes/worlds/room.gd" id="1_r57st"]
@@ -44,6 +44,8 @@ size = Vector3(1.2294312, 2, 1.2133789)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jrrc4"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc0b"]
+
 [node name="room" type="Node3D"]
 script = ExtResource("1_r57st")
 
@@ -52,6 +54,7 @@ environment = SubResource("Environment_r57st")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="floor" type="MeshInstance3D" parent="."]
@@ -59,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 mesh = SubResource("PlaneMesh_gueig")
 
 [node name="wall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.27286434, 1.221409, 1.8618126)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5, 1.862)
 material_override = SubResource("StandardMaterial3D_gueig")
 mesh = SubResource("PlaneMesh_1rfg5")
 
@@ -96,7 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.304846, 1.1010742, -1.2999
 shape = SubResource("BoxShape3D_1rfg5")
 
 [node name="door" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.3028002)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.131708, 0, 1.0368159)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_1rfg5")
@@ -120,6 +123,14 @@ metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="objects/body"]
 shape = SubResource("BoxShape3D_jrrc4")
+
+[node name="broken_window" type="Area3D" parent="objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2945719, 1.9626681)
+script = ExtResource("1_1rfg5")
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objects/broken_window"]
+shape = SubResource("BoxShape3D_llc0b")
 
 [connection signal="interacted" from="door" to="." method="_on_interactable_interacted"]
 [connection signal="interacted" from="objects/body" to="." method="_on_body_interacted"]

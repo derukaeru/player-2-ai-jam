@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d17jjl1084g8g"]
+[gd_scene load_steps=12 format=3 uid="uid://d17jjl1084g8g"]
 
 [ext_resource type="PackedScene" uid="uid://cu5mtvx0ghuig" path="res://objects/player/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://cwduyoqq6ujso" path="res://scenes/worlds/alleyway.tscn" id="2_0wfyh"]
@@ -7,6 +7,46 @@
 [ext_resource type="PackedScene" uid="uid://dqpgd715gxpb8" path="res://objects/nodes/input_interface/input_interface.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://mg6pflw3e3bx" path="res://objects/nodes/speech_bubble/speech_bubble.tscn" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://d2spmgrbg6nwg" path="res://objects/npcs/template/npc.tscn" id="7_o6xl0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(0, 0, 0, 0.59607846)
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "move"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(896, 88), Vector2(624, 88)]
+}
+
+[sub_resource type="Animation" id="Animation_tipki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(896, 88)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tipki"]
+_data = {
+&"RESET": SubResource("Animation_tipki"),
+&"move": SubResource("Animation_o6xl0")
+}
 
 [node name="main" type="Node3D"]
 
@@ -60,7 +100,62 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
+[node name="notebook_ui" type="Control" parent="CameraRig/Camera3D/gui"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -156.0
+offset_right = 255.99976
+offset_bottom = 160.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="CameraRig/Camera3D/gui/notebook_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0.07058824, 0.07058824, 0.74509805)
+
+[node name="notes" type="TextEdit" parent="CameraRig/Camera3D/gui/notebook_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
+placeholder_text = "Add notes here"
+
+[node name="toggle_notebook" type="Button" parent="CameraRig/Camera3D/gui/notebook_ui"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -22.0
+offset_right = -8.0
+offset_bottom = 18.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "<"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraRig/Camera3D/gui/notebook_ui"]
+libraries = {
+&"": SubResource("AnimationLibrary_tipki")
+}
+
 [node name="npc" parent="." instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7523284, 0, 2.3711948)
 
 [connection signal="text_sent" from="CameraRig/Camera3D/gui/input_interface" to="player" method="text_sent"]
+[connection signal="pressed" from="CameraRig/Camera3D/gui/notebook_ui/toggle_notebook" to="player" method="_on_toggle_notebook_pressed"]
