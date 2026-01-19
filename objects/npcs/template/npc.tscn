@@ -35,7 +35,6 @@ tts = SubResource("Resource_mruoa")
 
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_6s1l7")
-ai_name = ""
 ai_description = ".NEVER SAY ANYTHING UNLESS ASKED. "
 ai_character_config = SubResource("Resource_j6em1")
 ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene"

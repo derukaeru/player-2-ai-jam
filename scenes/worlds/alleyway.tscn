@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://buwpemwr6pti2" path="res://assets/textures/bricks/brick_modern_05.jpg" id="2_b68ot"]
 [ext_resource type="Texture2D" uid="uid://yjxlpacs7dt" path="res://assets/textures/alleyway/road.png" id="3_lcyy3"]
 [ext_resource type="Texture2D" uid="uid://cgtc0j1i5bafv" path="res://assets/textures/alleyway/apartment.jpg" id="4_m4w4m"]
-[ext_resource type="PackedScene" uid="uid://bvgi2bu0ctg7e" path="res://objects/npcs/cop.tscn" id="4_mtk16"]
 [ext_resource type="PackedScene" uid="uid://sbl7o85xu4m6" path="res://objects/npcs/street_vendor.tscn" id="6_6fib5"]
 [ext_resource type="PackedScene" uid="uid://debg2lmueqcwo" path="res://objects/windows/double_door.tscn" id="6_c0yk7"]
 [ext_resource type="PackedScene" uid="uid://diepf10qs88vt" path="res://objects/windows/window_close.tscn" id="6_c7a4j"]
 [ext_resource type="PackedScene" uid="uid://csin01vucwsnb" path="res://objects/npcs/guard.tscn" id="6_lcyy3"]
 [ext_resource type="PackedScene" uid="uid://d2qrs4s6scdsl" path="res://objects/windows/window_open.tscn" id="7_afrta"]
+[ext_resource type="PackedScene" uid="uid://d3ypmxxwei2ar" path="res://objects/npcs/cop_2.tscn" id="12_c0yk7"]
 [ext_resource type="Texture2D" uid="uid://bh66dr6fbhwn7" path="res://assets/textures/cone.png" id="12_yvydn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jfo6h"]
@@ -238,10 +238,6 @@ transform = Transform3D(1.2, 0, 0, 0, 1.6, 0, 0, 0, 1, 17.654146, 7.531206, 0.26
 [node name="window_close9" parent="apartment_building" instance=ExtResource("6_c7a4j")]
 transform = Transform3D(1.2, 0, 0, 0, 1.6, 0, 0, 0, 1, 12.803201, 7.531206, 0.26206017)
 
-[node name="cop" parent="." instance=ExtResource("4_mtk16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8695726, 0, 0.9510312)
-ai_description = "Just a passerby who knows nothing.NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when the cops pulled up near the apartment block he was walking near."
-
 [node name="ladder" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, 0)
 script = ExtResource("1_ri6om")
@@ -253,11 +249,11 @@ metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
 shape = SubResource("BoxShape3D_6tta0")
 
 [node name="street_vendor" parent="." instance=ExtResource("6_6fib5")]
-transform = Transform3D(0.9999902, -0.0038784647, -0.0021439556, 0.0038772465, 0.9999924, -0.00057356997, 0.0021461577, 0.0005652748, 0.99999756, -8.993148, 0.0005853176, -0.0006824471)
+transform = Transform3D(0.9999902, -0.0038784647, -0.0021439556, 0.0038772465, 0.9999924, -0.00057356997, 0.0021461577, 0.0005652748, 0.99999756, -4.7151566, 0.0005853176, 2.238556)
 ai_description = "Just a passerby who knows nothing.NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when the cops pulled up near the apartment block he was walking near."
 
 [node name="guard" parent="." instance=ExtResource("6_lcyy3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.881466, 0, -0.08174968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7532027, 0, 2.301961)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.9307455, 0.14754371, 0.33458036, 0.32162786, 0.7656516, 0.5570756, -0.17397904, 0.62610584, -0.7600807, 4.451195, 7.9075155, -5.4246564)
@@ -318,5 +314,8 @@ texture = ExtResource("12_yvydn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 14.898209)
 mesh = SubResource("PlaneMesh_lbhln")
+
+[node name="cop_2" parent="." instance=ExtResource("12_c0yk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.652998, 0, 0)
 
 [connection signal="interacted" from="apartment_building/door" to="." method="_on_door_interacted"]

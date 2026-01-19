@@ -9,6 +9,7 @@ var limit_left = 4.9
 var limit_right = -3.9
 
 func _ready():
+	
 	alley_config()
 
 func _process(delta):

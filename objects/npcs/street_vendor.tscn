@@ -59,7 +59,14 @@ animations = [{
 
 [node name="street_vendor" instance=ExtResource("1_hufx7")]
 ai_name = "Ryn Hale"
+ai_description = "NEVER SAY ANYTHING UNLESS ASKED. Was cleaning up his vending stand so he did not see the actual person fell, but he does not reveal this unless asked if he actually saw the person fall. He says saw the victim get thrown out the window. He doesn't know that his memory is blurry. Because the body is inside the apartment. "
 ai_save_conversation_history = true
+ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene. Has bad memory of the things around him."
+
+[node name="Player2AINPC" parent="." index="1"]
+character_name = "Ryn Hale"
+character_description = "NEVER SAY ANYTHING UNLESS ASKED. Was cleaning up his vending stand so he did not see the actual person fell, but he does not reveal this unless asked if he actually saw the person fall. He says saw the victim get thrown out the window. He doesn't know that his memory is blurry. Because the body is inside the apartment. "
+character_system_message = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene. Has bad memory of the things around him."
 
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014343262, 0.935791, 0.011711121)

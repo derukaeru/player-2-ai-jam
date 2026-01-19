@@ -56,6 +56,13 @@ animations = [{
 [node name="neighbor" instance=ExtResource("1_6bb1f")]
 visible = false
 ai_name = "Ken Voss"
+ai_description = "NEVER SAY ANYTHING UNLESS ASKED. He was in bed all day, except for that time when they had an argument with the victim, his neighbor, Ilya Kade, earlier that day. Doesn't remember them having a guard but slightly brushes it off as him being a room hermit."
+ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene. Tardy and gloomy."
+
+[node name="Player2AINPC" parent="." index="1"]
+character_name = "Ken Voss"
+character_description = "NEVER SAY ANYTHING UNLESS ASKED. He was in bed all day, except for that time when they had an argument with the victim, his neighbor, Ilya Kade, earlier that day. Doesn't remember them having a guard but slightly brushes it off as him being a room hermit."
+character_system_message = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene. Tardy and gloomy."
 
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.03918457)

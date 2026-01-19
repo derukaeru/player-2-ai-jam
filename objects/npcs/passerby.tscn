@@ -65,8 +65,13 @@ animations = [{
 
 [node name="passerby" instance=ExtResource("1_5kolv")]
 ai_name = "Mara"
-ai_description = "Just a homeless passerby who knows nothing. NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when the cops pulled up near the apartment block he was walking near."
-ai_behaviour = "1980's style. NEVER SAY ANYTHING UNLESS ASKED. "
+ai_description = "Just a homeless passerby who knows nothing. NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when heard glasses break. Then a grunt. He did not see where the person who fell went."
+ai_behaviour = "1980's style. NEVER SAY ANYTHING UNLESS ASKED. A bit crazy but functional."
+
+[node name="Player2AINPC" parent="." index="1"]
+character_name = "Mara"
+character_description = "Just a homeless passerby who knows nothing. NEVER SAY ANYTHING UNLESS ASKED.  He was coming home from work when heard glasses break. Then a grunt. He did not see where the person who fell went."
+character_system_message = "1980's style. NEVER SAY ANYTHING UNLESS ASKED. A bit crazy but functional."
 
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06750488, 0.75, 0.048950195)
