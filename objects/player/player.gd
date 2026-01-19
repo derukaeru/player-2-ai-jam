@@ -22,10 +22,13 @@ func _physics_process(delta):
 			direction.x = -1
 			flip = false
 		
-		if Global.ia("forward") or Global.ia("backward") or Global.ia("left") or Global.ia("right"):
+	if Global.ia("forward") or Global.ia("backward") or Global.ia("left") or Global.ia("right"):
+		if can_move:
 			$AnimatedSprite3D.play("walk")
 		else:
 			$AnimatedSprite3D.play("idle")
+	else:
+		$AnimatedSprite3D.play("idle")
 	
 	$AnimatedSprite3D.flip_h = flip
 	
@@ -46,9 +49,13 @@ func _on_toggle_notebook_pressed():
 	if notebook_open:
 		nb_ui.get_node("AnimationPlayer").play_backwards("move")
 		await nb_ui.get_node("AnimationPlayer").animation_finished
+		nb_ui.get_node("TextureRect").hide()
+		Global.gn("player").can_move = true
 		notebook_open = false
 	else:
 		nb_ui.get_node("AnimationPlayer").play("move")
 		await nb_ui.get_node("AnimationPlayer").animation_finished
+		nb_ui.get_node("TextureRect").show()
+		Global.gn("player").can_move = false
 		notebook_open = true
 		

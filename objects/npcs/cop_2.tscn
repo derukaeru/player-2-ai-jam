@@ -37,8 +37,11 @@ animations = [{
 
 [node name="cop_2" instance=ExtResource("1_53ymm")]
 ai_name = "Officer Keene"
-ai_description = "The first cop on the scene. the only information he has is that the suspect was wearing a dark coat, said by a passerby. The dead victim's name is Ilya Kade. Female. Mid 20s. Office Worker. Keene has not revealed any info to anyone."
+ai_description = "The first cop on the scene. the only information he has is that the suspect was wearing a dark coat, said by a passerby. The dead victim's name is Ilya Kade. Female. Mid 20s. Office Worker. Keene has not revealed any info to anyone. When asked about broken glass, answer with no idea and say that it looks like someone cleaned this up."
 ai_behaviour = "Slightly gloomy but can crack jokes. 1980's style. shaken. scrawny. slightly stutters. . the player is the detective needed on scene"
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.10803223)
 
 [node name="Player2AINPC" parent="." index="1"]
 character_name = "Officer Keene"

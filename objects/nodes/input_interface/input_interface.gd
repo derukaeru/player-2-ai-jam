@@ -30,6 +30,7 @@ func _ready() -> void:
 				if event.pressed and event.keycode == KEY_ESCAPE:
 					self.hide()
 					Global.gn("player").can_move = true
+					Global.gn("player").curr_npc = null
 	)
 
 	self.visibility_changed.connect(func():

@@ -48,7 +48,7 @@ func hallway_config():
 func alley_config():
 	position = Vector3(0, 3.4, -6.892)
 	$Camera3D.rotation_degrees = Vector3(-12.0, -180, 0)
-	limit_left = 8
+	limit_left = 9
 	limit_right = -9
 	$Camera3D.set_perspective(53.5, 0.05, 4000.0)
 	#$Camera3D.set_orthogonal(6.918, 0.05, 4000.0)

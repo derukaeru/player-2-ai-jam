@@ -46,6 +46,7 @@ theme_override_colors/font_placeholder_color = Color(0.6370635, 0.62967515, 0.83
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_ts831")
 placeholder_text = ". . ."
+wrap_mode = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

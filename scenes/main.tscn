@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d17jjl1084g8g"]
+[gd_scene load_steps=18 format=3 uid="uid://d17jjl1084g8g"]
 
 [ext_resource type="Script" uid="uid://dwoa6d62hjata" path="res://scenes/main.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://cu5mtvx0ghuig" path="res://objects/player/player.tscn" id="1_o5qli"]
@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dqpgd715gxpb8" path="res://objects/nodes/input_interface/input_interface.tscn" id="4_tefeu"]
 [ext_resource type="PackedScene" uid="uid://mg6pflw3e3bx" path="res://objects/nodes/speech_bubble/speech_bubble.tscn" id="5_o6xl0"]
 [ext_resource type="Shader" uid="uid://b32occhoirdfc" path="res://misc/shaders/crt.gdshader" id="7_tipki"]
-[ext_resource type="Texture2D" uid="uid://c0ekosyvcb8p8" path="res://assets/textures/caution_tape.png" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://deoqslrride0o" path="res://assets/textures/notebook.png" id="8_85g3d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
-bg_color = Color(0, 0, 0, 0.59607846)
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_tipki"]
 length = 0.001
@@ -78,11 +78,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/gui/ColorRect:color")
+tracks/1/path = NodePath("Camera3D/gui/cover:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.61),
+"times": PackedFloat32Array(0, 0.47),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -105,14 +105,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/gui/ColorRect:color")
+tracks/1/path = NodePath("Camera3D/gui/cover:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ya4ey"]
@@ -120,15 +120,6 @@ _data = {
 &"RESET": SubResource("Animation_choun"),
 &"intro": SubResource("Animation_85g3d")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85g3d"]
-albedo_texture = ExtResource("9_85g3d")
-uv1_scale = Vector3(4.145, 1, 1)
-texture_filter = 0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_choun"]
-material = SubResource("StandardMaterial3D_85g3d")
-size = Vector2(15, 0.15)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_85g3d")
@@ -159,7 +150,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 
 [node name="input_interface" parent="CameraRig/Camera3D/gui" instance=ExtResource("4_tefeu")]
 visible = false
@@ -193,29 +184,33 @@ offset_right = 256.0
 offset_bottom = 160.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="bg" type="ColorRect" parent="CameraRig/Camera3D/gui/notebook_ui"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.07058824, 0.07058824, 0.07058824, 0.74509805)
+[node name="TextureRect" type="TextureRect" parent="CameraRig/Camera3D/gui/notebook_ui"]
+visible = false
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 312.0
+mouse_filter = 0
+texture = ExtResource("8_85g3d")
 
 [node name="notes" type="TextEdit" parent="CameraRig/Camera3D/gui/notebook_ui"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 12.0
-offset_right = -16.0
-offset_bottom = -12.0
+offset_left = 24.0
+offset_top = 56.0
+offset_right = -56.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.11858118, 0.118581496, 0.11858127, 0.6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
 placeholder_text = "Add notes here"
+wrap_mode = 1
 
 [node name="toggle_notebook" type="Button" parent="CameraRig/Camera3D/gui/notebook_ui"]
 layout_mode = 1
@@ -236,7 +231,6 @@ libraries = {
 }
 
 [node name="cover" type="ColorRect" parent="CameraRig/Camera3D/gui"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,7 +241,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="CameraRig/Camera3D/gui"]
-visible = false
 material = SubResource("ShaderMaterial_85g3d")
 layout_mode = 1
 anchors_preset = 15
@@ -256,25 +249,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 1, 1, 0)
+color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CameraRig")
 libraries = {
 &"": SubResource("AnimationLibrary_ya4ey")
 }
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.014754502, -0.99925363, -0.035698403, -0.034970477, 0.03516483, -0.9987695, 0.99927944, 0.015984768, -0.034425557, 10, 1.2201947, -3)
-mesh = SubResource("PlaneMesh_choun")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.999963, 0.008604118, 0.0005473522, -0.0002468368, 0.034887098, -0.9993914, -0.008618009, -0.99935424, -0.034883596, -1.73681, 1.2201947, 1.069545)
-mesh = SubResource("PlaneMesh_choun")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0147545915, 0.99925363, 0.03569841, -0.07078096, 0.03456903, -0.99689263, -0.99738264, -0.017235547, 0.070218146, -14, 0.91785014, -3)
-mesh = SubResource("PlaneMesh_choun")
 
 [connection signal="text_sent" from="CameraRig/Camera3D/gui/input_interface" to="player" method="text_sent"]
 [connection signal="pressed" from="CameraRig/Camera3D/gui/notebook_ui/toggle_notebook" to="player" method="_on_toggle_notebook_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://tfrk1xt2kl1y"]
+[gd_scene load_steps=37 format=3 uid="uid://tfrk1xt2kl1y"]
 
 [ext_resource type="Script" uid="uid://ctiybtck3ye61" path="res://scenes/worlds/hallway.gd" id="1_bg3ta"]
 [ext_resource type="Texture2D" uid="uid://cgtc0j1i5bafv" path="res://assets/textures/alleyway/apartment.jpg" id="2_m356l"]
@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://rpj4w8lnl0pd" path="res://objects/npcs/neighbor.tscn" id="4_f34q8"]
 [ext_resource type="PackedScene" uid="uid://ptitrpvja58p" path="res://objects/windows/door.tscn" id="4_l3s3t"]
 [ext_resource type="Texture2D" uid="uid://fjgtih07uu3i" path="res://assets/textures/plant.png" id="5_kyi8s"]
+[ext_resource type="Shader" uid="uid://c76mt11ko4wof" path="res://misc/shaders/highlight.gdshader" id="5_pod0w"]
 [ext_resource type="Texture2D" uid="uid://dkjnj1mti4v74" path="res://assets/textures/knocked_plant.png" id="5_sgwrx"]
+[ext_resource type="Texture2D" uid="uid://bqq28uxb8n2b7" path="res://assets/textures/blood_streaks.png" id="9_6umh2"]
+[ext_resource type="Texture2D" uid="uid://c0ekosyvcb8p8" path="res://assets/textures/caution_tape.png" id="9_m7yq6"]
+[ext_resource type="Texture2D" uid="uid://kajhs5nvr7fs" path="res://assets/textures/can.png" id="12_7gedy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tpgcj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -68,8 +72,54 @@ size = Vector3(1, 2.4975586, 1.1132813)
 size = Vector3(1, 2.062622, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgwrx"]
+size = Vector3(1.3873291, 1, 2.4580078)
+
+[sub_resource type="Gradient" id="Gradient_pod0w"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7gedy"]
+gradient = SubResource("Gradient_pod0w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ot8tt"]
+render_priority = 0
+shader = ExtResource("5_pod0w")
+shader_parameter/NORMAL_TEXTURE = SubResource("GradientTexture1D_7gedy")
+shader_parameter/disable_shader = false
+shader_parameter/MAX_DEPTH = 1000.0
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(0.45, 0.45, 0.45, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/pixelSize = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gedy"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ot8tt")
+shader = ExtResource("5_pod0w")
+shader_parameter/disable_shader = false
+shader_parameter/MAX_DEPTH = 1000.0
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.5
+shader_parameter/highlight_color = Color(0.45, 0.45, 0.45, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/pixelSize = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6umh2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85g3d"]
+albedo_texture = ExtResource("9_m7yq6")
+uv1_scale = Vector3(4.145, 1, 1)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pod0w"]
+material = SubResource("StandardMaterial3D_85g3d")
+size = Vector2(15, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m7yq6"]
+size = Vector3(1.3190918, 0.59765625, 0.4053955)
 
 [node name="hallway" type="Node3D"]
 script = ExtResource("1_bg3ta")
@@ -178,10 +228,12 @@ script = ExtResource("2_qsf2n")
 metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16339111, 0, -0.7290039)
 shape = SubResource("BoxShape3D_sgwrx")
 
 [node name="Sprite3D" type="Sprite3D" parent="plant"]
 transform = Transform3D(-2.0744662, 0, -2.4729565e-07, -2.0664652e-07, 1.1395043, 1.7334766, 1.358395e-07, 1.7334766, -1.1395043, 0, -0.12593442, -0.37350452)
+material_overlay = SubResource("ShaderMaterial_7gedy")
 shaded = true
 texture_filter = 0
 texture = ExtResource("5_sgwrx")
@@ -228,13 +280,65 @@ ai_description = ".NEVER SAY ANYTHING UNLESS ASKED. Partner of Officer Keene. Ta
 
 [node name="neighbor" parent="." instance=ExtResource("4_f34q8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.3266375)
+visible = true
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.4878378, 5.3081284, -0.9012375)
-light_energy = 0.475
+light_energy = 1.19
 shadow_enabled = true
+shadow_bias = 1.57
 spot_range = 35.857788
 spot_angle = 82.64849
 
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.6478859, 0.75787383, -0.076622605, 0.056813136, -0.052232437, -0.9970175, -0.75961584, -0.65030676, -0.009216455, -6.433686, 1.3734545, 0.8823681)
+mesh = SubResource("PlaneMesh_pod0w")
+skeleton = NodePath("../blood_streaks")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.24669665, -0.9683987, 0.03667569, 0.056813147, -0.052232433, -0.99701756, 0.9674262, -0.24387711, 0.06790334, 8.33742, 1.3734545, 0.8823681)
+mesh = SubResource("PlaneMesh_pod0w")
+skeleton = NodePath("../blood_streaks")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.24669664, -0.9683987, 0.036675695, -0.20810021, 0.015974507, -0.97797704, 0.9464858, -0.24889572, -0.20546469, 8.478714, 1.3734545, -0.2832029)
+mesh = SubResource("PlaneMesh_pod0w")
+skeleton = NodePath("../blood_streaks")
+
+[node name="blood_streaks" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.378344, 0.0018065274, 0)
+script = ExtResource("2_qsf2n")
+interactable_type = 1
+metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
+
+[node name="Sprite3D" type="Sprite3D" parent="blood_streaks"]
+transform = Transform3D(1, 0, 0, 0, 0.06301692, -0.9980125, 0, 0.9980125, 0.06301692, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("9_6umh2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blood_streaks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010986328, -0.20117188, -0.08050537)
+shape = SubResource("BoxShape3D_m7yq6")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.79393286, -0.6867614, 0.023008706, 0.20078543, 0.19823426, -1.0113794, 0.65715736, 0.7691305, 0.2812155, 4, 0.083109856, 0)
+shaded = true
+texture_filter = 0
+texture = ExtResource("12_7gedy")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.6820846, -0.7980096, -0.021001212, 0.2007854, 0.19823423, -1.0113791, 0.77262247, 0.65298045, 0.2813725, -4.67289, 0.083109856, -0.91438985)
+shaded = true
+texture_filter = 0
+texture = ExtResource("12_7gedy")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(1.0229007, 0.08757529, 0.22023775, 0.20078544, 0.19823425, -1.0113794, -0.12593395, 1.0273917, 0.17637146, 8.161869, 0.083109856, 0)
+shaded = true
+texture_filter = 0
+texture = ExtResource("12_7gedy")
+
 [connection signal="interacted" from="apartment_door" to="." method="_on_apartment_door_interacted"]
 [connection signal="interacted" from="outside_door" to="." method="_on_outside_door_interacted"]
+[connection signal="interacted" from="plant" to="." method="_on_plant_interacted"]
+[connection signal="interacted" from="blood_streaks" to="." method="_on_blood_streaks_interacted"]

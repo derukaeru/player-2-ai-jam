@@ -30,12 +30,14 @@ func _process(_delta):
 		$AnimatedSprite3D.flip_h = false
 
 func _on_interactable_interacted(_interactable):
-	Global.gn("player").curr_npc = self
-	Global.gn("input_interface").show()
-	Global.gn("player").can_move = false
+	if Global.gn("player").curr_npc == null and not Global.gn("camera_rig").get_node("Camera3D/gui/notebook_ui/TextureRect").visible:
+		Global.gn("player").curr_npc = self
+		Global.gn("input_interface").show()
+		Global.gn("player").can_move = false
 
 func reply(message):
 	Global.gn("speech_bubble").play(message)
+	Global.gn("player").curr_npc = null
 
 func thinking():
 	Global.gn("input_interface").get_node("Thinking Animation").show()

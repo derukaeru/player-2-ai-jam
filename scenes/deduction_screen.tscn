@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://cf7riwvx6mhhw"]
+
+[ext_resource type="Script" uid="uid://cl6kbrqd23ip4" path="res://scenes/deduction_screen.gd" id="1_1plgg"]
+[ext_resource type="Script" uid="uid://bupnh0kqklshe" path="res://addons/player2/nodes/Player2AINPC.gd" id="2_fxy71"]
+[ext_resource type="Script" uid="uid://fpb2ysodtcuy" path="res://addons/player2/helpers/tool_call/ToolCallFunctionDefinition.gd" id="3_saj01"]
+[ext_resource type="Script" uid="uid://dt7mt3t7a08me" path="res://addons/player2/helpers/tool_call/ToolCallFunctionDefinitions.gd" id="4_3qqae"]
+[ext_resource type="Script" uid="uid://bsi5tjg54www7" path="res://addons/player2/helpers/config/Player2AICharacterConfig.gd" id="5_gbf44"]
+[ext_resource type="Script" uid="uid://mt8gdygmb5og" path="res://addons/player2/helpers/config/Player2TTSConfig.gd" id="6_uww6t"]
+[ext_resource type="Resource" uid="uid://das4ap6qvtr75" path="res://addons/player2/chat_config.tres" id="7_guwby"]
+
+[sub_resource type="Resource" id="Resource_841km"]
+Resource = null
+resource_path = "res://scenes/deduction_screen.tscn::Resource_841km"
+script = ExtResource("4_3qqae")
+
+[sub_resource type="Resource" id="Resource_kqrnd"]
+script = ExtResource("6_uww6t")
+
+[sub_resource type="Resource" id="Resource_dwfai"]
+script = ExtResource("5_gbf44")
+tts = SubResource("Resource_kqrnd")
+
+[node name="deduction_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1plgg")
+
+[node name="killer_name" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 88.0
+offset_right = 416.0
+offset_bottom = 128.0
+
+[node name="cause" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 144.0
+offset_right = 416.0
+offset_bottom = 184.0
+
+[node name="victim_name" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 200.0
+offset_right = 416.0
+offset_bottom = 240.0
+
+[node name="victim_age" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 416.0
+offset_bottom = 296.0
+
+[node name="victim_occupation" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 312.0
+offset_right = 416.0
+offset_bottom = 352.0
+
+[node name="Player2AINPC" type="Node" parent="."]
+script = ExtResource("2_fxy71")
+character_description = "Killer name is Jax Orin. Caused by Jealousy. Victim's Name is Ilya Kade. Age 26. Occupation office worker."
+character_system_message = "Straight to the point. Consider a few typos and longer answer but connected. Only reply in purely \"0\" if all of them are wrong and \"1\" if al of them are correct. nothing more, nothing less"
+tool_calls_function_definitions = SubResource("Resource_841km")
+character_config = SubResource("Resource_dwfai")
+chat_config = ExtResource("7_guwby")
+metadata/_custom_type_script = "uid://bupnh0kqklshe"
+
+[node name="check" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="chat_received" from="Player2AINPC" to="." method="_on_player_2ainpc_chat_received"]
+[connection signal="pressed" from="check" to="." method="_on_check_pressed"]

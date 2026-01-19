@@ -8,11 +8,17 @@
 size = Vector3(0.63934326, 1.921875, 0.25743103)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nkns1"]
+render_priority = 0
 shader = ExtResource("2_e82w8")
-shader_parameter/outline_width = 1.0
-shader_parameter/lower_limit = Vector2(1, 1)
-shader_parameter/upper_limit = Vector2(1, 1)
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/disable_shader = false
+shader_parameter/MAX_DEPTH = 1000.0
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(0.45, 0.45, 0.45, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/pixelSize = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkns1"]
 atlas = ExtResource("2_q3o7t")
@@ -63,9 +69,12 @@ ai_description = "NEVER SAY ANYTHING UNLESS ASKED. Was cleaning up his vending s
 ai_save_conversation_history = true
 ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene. Has bad memory of the things around him."
 
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.030212402)
+
 [node name="Player2AINPC" parent="." index="1"]
 character_name = "Ryn Hale"
-character_description = "NEVER SAY ANYTHING UNLESS ASKED. Was cleaning up his vending stand so he did not see the actual person fell, but he does not reveal this unless asked if he actually saw the person fall. He says saw the victim get thrown out the window. He doesn't know that his memory is blurry. Because the body is inside the apartment. "
+character_description = "NEVER SAY ANYTHING UNLESS ASKED. The one who called the police. Was cleaning up his vending stand so he did not see the actual person fell, but he does not reveal this unless asked if he actually saw the person fall. He says saw the victim get thrown out the window. He doesn't know that his memory is blurry. Because the body is inside the apartment. "
 character_system_message = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene. Has bad memory of the things around him."
 
 [node name="CollisionShape3D" parent="." index="2"]
