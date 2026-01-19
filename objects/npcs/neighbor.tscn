@@ -61,7 +61,7 @@ ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the 
 
 [node name="Player2AINPC" parent="." index="1"]
 character_name = "Ken Voss"
-character_description = "NEVER SAY ANYTHING UNLESS ASKED. He was in bed all day, except for that time when they had an argument with the victim, his neighbor, Ilya Kade, earlier that day. Doesn't remember them having a guard but slightly brushes it off as him being a room hermit."
+character_description = "NEVER SAY ANYTHING UNLESS ASKED. He was in bed all day, except for that time when they had an argument with the victim, his neighbor, Ms. Ilya Kade, earlier that day. When mentioned about a security guard, he tells the detective that they do not have a guard in this apartment."
 character_system_message = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the detective needed on scene. Tardy and gloomy."
 
 [node name="CollisionShape3D" parent="." index="2"]

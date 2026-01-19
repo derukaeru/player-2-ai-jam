@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf7riwvx6mhhw"]
+[gd_scene load_steps=12 format=3 uid="uid://cf7riwvx6mhhw"]
 
 [ext_resource type="Script" uid="uid://cl6kbrqd23ip4" path="res://scenes/deduction_screen.gd" id="1_1plgg"]
 [ext_resource type="Script" uid="uid://bupnh0kqklshe" path="res://addons/player2/nodes/Player2AINPC.gd" id="2_fxy71"]
+[ext_resource type="Texture2D" uid="uid://c0bt102ron0n5" path="res://assets/textures/paper.png" id="2_saj01"]
 [ext_resource type="Script" uid="uid://fpb2ysodtcuy" path="res://addons/player2/helpers/tool_call/ToolCallFunctionDefinition.gd" id="3_saj01"]
 [ext_resource type="Script" uid="uid://dt7mt3t7a08me" path="res://addons/player2/helpers/tool_call/ToolCallFunctionDefinitions.gd" id="4_3qqae"]
 [ext_resource type="Script" uid="uid://bsi5tjg54www7" path="res://addons/player2/helpers/config/Player2AICharacterConfig.gd" id="5_gbf44"]
@@ -18,6 +19,7 @@ script = ExtResource("6_uww6t")
 
 [sub_resource type="Resource" id="Resource_dwfai"]
 script = ExtResource("5_gbf44")
+tts_enabled = false
 tts = SubResource("Resource_kqrnd")
 
 [node name="deduction_screen" type="Control"]
@@ -29,19 +31,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1plgg")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 464.0
+texture = ExtResource("2_saj01")
+
 [node name="killer_name" type="TextEdit" parent="."]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 88.0
 offset_right = 416.0
 offset_bottom = 128.0
-
-[node name="cause" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 144.0
-offset_right = 416.0
-offset_bottom = 184.0
+placeholder_text = "Suspect's Name..."
 
 [node name="victim_name" type="TextEdit" parent="."]
 layout_mode = 0
@@ -49,6 +53,7 @@ offset_left = 192.0
 offset_top = 200.0
 offset_right = 416.0
 offset_bottom = 240.0
+placeholder_text = "Victim's Name..."
 
 [node name="victim_age" type="TextEdit" parent="."]
 layout_mode = 0
@@ -56,6 +61,7 @@ offset_left = 192.0
 offset_top = 256.0
 offset_right = 416.0
 offset_bottom = 296.0
+placeholder_text = "Victim's Age..."
 
 [node name="victim_occupation" type="TextEdit" parent="."]
 layout_mode = 0
@@ -63,20 +69,34 @@ offset_left = 192.0
 offset_top = 312.0
 offset_right = 416.0
 offset_bottom = 352.0
+placeholder_text = "Victim's Job..."
+
+[node name="check" type="Button" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 384.0
+offset_right = 360.0
+offset_bottom = 416.0
+text = "check"
 
 [node name="Player2AINPC" type="Node" parent="."]
 script = ExtResource("2_fxy71")
-character_description = "Killer name is Jax Orin. Caused by Jealousy. Victim's Name is Ilya Kade. Age 26. Occupation office worker."
+character_description = "Killer name is Jax Orin. Victim's Name is Ilya Kade. Age 26. Occupation office worker."
 character_system_message = "Straight to the point. Consider a few typos and longer answer but connected. Only reply in purely \"0\" if all of them are wrong and \"1\" if al of them are correct. nothing more, nothing less"
+greet_on_entry = false
 tool_calls_function_definitions = SubResource("Resource_841km")
 character_config = SubResource("Resource_dwfai")
 chat_config = ExtResource("7_guwby")
 metadata/_custom_type_script = "uid://bupnh0kqklshe"
 
-[node name="check" type="Button" parent="."]
+[node name="close" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "x"
 
-[connection signal="chat_received" from="Player2AINPC" to="." method="_on_player_2ainpc_chat_received"]
 [connection signal="pressed" from="check" to="." method="_on_check_pressed"]
+[connection signal="chat_received" from="Player2AINPC" to="." method="_on_player_2ainpc_chat_received"]
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

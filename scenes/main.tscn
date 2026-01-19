@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d17jjl1084g8g"]
+[gd_scene load_steps=21 format=3 uid="uid://d17jjl1084g8g"]
 
 [ext_resource type="Script" uid="uid://dwoa6d62hjata" path="res://scenes/main.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://cu5mtvx0ghuig" path="res://objects/player/player.tscn" id="1_o5qli"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://mg6pflw3e3bx" path="res://objects/nodes/speech_bubble/speech_bubble.tscn" id="5_o6xl0"]
 [ext_resource type="Shader" uid="uid://b32occhoirdfc" path="res://misc/shaders/crt.gdshader" id="7_tipki"]
 [ext_resource type="Texture2D" uid="uid://deoqslrride0o" path="res://assets/textures/notebook.png" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://cf7riwvx6mhhw" path="res://scenes/deduction_screen.tscn" id="9_choun"]
+[ext_resource type="AudioStream" uid="uid://b62g6bnxjeoj8" path="res://assets/audio/calming-rain-257596.mp3" id="11_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://h8l0m4nn0d1u" path="res://assets/audio/open-door-sound-247415.mp3" id="12_eb6dy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
 bg_color = Color(0, 0, 0, 0)
@@ -125,7 +128,7 @@ _data = {
 script = ExtResource("1_85g3d")
 
 [node name="player" parent="." instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5512223, 0, -0.45868015)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.911239, 0, -0.45868015)
 input_ray_pickable = false
 
 [node name="world" type="Node3D" parent="." groups=["world"]]
@@ -170,6 +173,11 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
+
+[node name="deduction_screen" parent="CameraRig/Camera3D/gui" instance=ExtResource("9_choun")]
+visible = false
+layout_mode = 1
 mouse_filter = 1
 
 [node name="notebook_ui" type="Control" parent="CameraRig/Camera3D/gui"]
@@ -256,6 +264,15 @@ root_node = NodePath("../CameraRig")
 libraries = {
 &"": SubResource("AnimationLibrary_ya4ey")
 }
+
+[node name="rain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ya4ey")
+volume_db = -18.0
+autoplay = true
+parameters/looping = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_eb6dy")
 
 [connection signal="text_sent" from="CameraRig/Camera3D/gui/input_interface" to="player" method="text_sent"]
 [connection signal="pressed" from="CameraRig/Camera3D/gui/notebook_ui/toggle_notebook" to="player" method="_on_toggle_notebook_pressed"]
