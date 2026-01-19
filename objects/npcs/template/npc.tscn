@@ -41,6 +41,7 @@ ai_behaviour = "1980's style.NEVER SAY ANYTHING UNLESS ASKED. the player is the 
 
 [node name="Interactable" type="Area3D" parent="."]
 script = ExtResource("2_hjrwa")
+one_shot = false
 metadata/_custom_type_script = "uid://dsmaf4bqvs4ge"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
